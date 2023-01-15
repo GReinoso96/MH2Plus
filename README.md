@@ -105,8 +105,6 @@ All translated strings match their Freedom Unite equivalents where possible, thi
 
 # To-Do
   * Clean up code, many things are messy.
-  * Fix a few problems with Lance input, weapon is fully usable but charge moves need a good scrubbing.
-  * Implement hold to carve/gather when crouching (Easy peasy).
 
 ## Other planned features
   These will all be part of an optional rebalance patch.
