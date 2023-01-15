@@ -1,6 +1,6 @@
-﻿; 30 files included
-; 6948 lines
-; 2124 labels
+﻿; 32 files included
+; 7808 lines
+; 2408 labels
 ; 19 equations
 
 ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm
@@ -12,6 +12,8 @@
 ; asm/msg/eng/WeaponMeleeName.asm
 ; asm/msg/eng/WeaponGunnerName.asm
 ; asm/msg/eng/ItemName.asm
+; asm/msg/eng/SkillName.asm
+; asm/msg/eng/SkSysName.asm
 ; asm/controls/general.asm
 ; asm/controls/SnS_Basic_ck.asm
 ; asm/controls/SnS_attack_combo.asm
@@ -4866,8 +4868,864 @@ FFFFFFFF .open "unn1/sub_main.ovl","sub_main.ovl",0x002E3900          ; D:\pcsx2
 004655C8 .word 0x004AE216                                             ; asm/msg/eng/ItemName.asm line 2764
 004655CC .word 0x004AE227                                             ; asm/msg/eng/ItemName.asm line 2765
 004655D0 .word 0x004AE238                                             ; asm/msg/eng/ItemName.asm line 2766
-004655D4 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 19
-FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 20
+004655D4 .org 0x0049ADF0                                              ; asm/msg/eng/SkillName.asm line 1
+0049ADF0 @noskillskname:                                              ; asm/msg/eng/SkillName.asm line 2
+0049ADF0 .byte 0x4E,0x6F,0x20,0x53,0x6B,0x69,0x6C,0x6C,0x00           ; asm/msg/eng/SkillName.asm line 3
+0049ADF9 @paradurationhalvedskname:                                   ; asm/msg/eng/SkillName.asm line 4
+0049ADF9 .byte 0x50,0x61,0x72,0x61,0x20,0x44,0x75,0x72,0x61,0x74,0x69,0x6F,0x6E,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 5
+0049AE0E @paralysisnegatedskname:                                     ; asm/msg/eng/SkillName.asm line 6
+0049AE0E .byte 0x50,0x61,0x72,0x61,0x6C,0x79,0x73,0x69,0x73,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 7
+0049AE20 @paradurationx2skname:                                       ; asm/msg/eng/SkillName.asm line 8
+0049AE20 .byte 0x50,0x61,0x72,0x61,0x20,0x44,0x75,0x72,0x61,0x74,0x69,0x6F,0x6E,0x5B,0x81,0x7E,0x32,0x5D,0x00; asm/msg/eng/SkillName.asm line 9
+0049AE33 @sleepdurhalvedskname:                                       ; asm/msg/eng/SkillName.asm line 10
+0049AE33 .byte 0x53,0x6C,0x65,0x65,0x70,0x20,0x44,0x75,0x72,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 11
+0049AE44 @sleepnegatedskname:                                         ; asm/msg/eng/SkillName.asm line 12
+0049AE44 .byte 0x53,0x6C,0x65,0x65,0x70,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 13
+0049AE52 @sleepdurx2skname:                                           ; asm/msg/eng/SkillName.asm line 14
+0049AE52 .byte 0x53,0x6C,0x65,0x65,0x70,0x20,0x44,0x75,0x72,0x5B,0x81,0x7E,0x32,0x5D,0x00; asm/msg/eng/SkillName.asm line 15
+0049AE61 @faintprobhalvedskname:                                      ; asm/msg/eng/SkillName.asm line 16
+0049AE61 .byte 0x46,0x61,0x69,0x6E,0x74,0x20,0x50,0x72,0x6F,0x62,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 17
+0049AE73 @faintnegatedskname:                                         ; asm/msg/eng/SkillName.asm line 18
+0049AE73 .byte 0x46,0x61,0x69,0x6E,0x74,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 19
+0049AE81 @faintdurationx2skname:                                      ; asm/msg/eng/SkillName.asm line 20
+0049AE81 .byte 0x46,0x61,0x69,0x6E,0x74,0x20,0x44,0x75,0x72,0x61,0x74,0x69,0x6F,0x6E,0x5B,0x81,0x7E,0x32,0x5D,0x00; asm/msg/eng/SkillName.asm line 21
+0049AE95 @poisondurhalvedskname:                                      ; asm/msg/eng/SkillName.asm line 22
+0049AE95 .byte 0x50,0x6F,0x69,0x73,0x6F,0x6E,0x20,0x44,0x75,0x72,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 23
+0049AEA7 @poisonnegatedskname:                                        ; asm/msg/eng/SkillName.asm line 24
+0049AEA7 .byte 0x50,0x6F,0x69,0x73,0x6F,0x6E,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 25
+0049AEB6 @poisondurx2skname:                                          ; asm/msg/eng/SkillName.asm line 26
+0049AEB6 .byte 0x50,0x6F,0x69,0x73,0x6F,0x6E,0x20,0x44,0x75,0x72,0x5B,0x81,0x7E,0x32,0x5D,0x00; asm/msg/eng/SkillName.asm line 27
+0049AEC6 @antisepticadd1skname:                                       ; asm/msg/eng/SkillName.asm line 28
+0049AEC6 .byte 0x41,0x6E,0x74,0x69,0x73,0x65,0x70,0x74,0x69,0x63,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 29
+0049AED4 @antisepticadd2skname:                                       ; asm/msg/eng/SkillName.asm line 30
+0049AED4 .byte 0x41,0x6E,0x74,0x69,0x73,0x65,0x70,0x74,0x69,0x63,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 31
+0049AEE2 @virulentskname:                                             ; asm/msg/eng/SkillName.asm line 32
+0049AEE2 .byte 0x56,0x69,0x72,0x75,0x6C,0x65,0x6E,0x74,0x00           ; asm/msg/eng/SkillName.asm line 33
+0049AEEB @snowresistanceadd1skname:                                   ; asm/msg/eng/SkillName.asm line 34
+0049AEEB .byte 0x53,0x6E,0x6F,0x77,0x20,0x52,0x65,0x73,0x69,0x73,0x74,0x61,0x6E,0x63,0x65,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 35
+0049AEFE @snowresistanceadd2skname:                                   ; asm/msg/eng/SkillName.asm line 36
+0049AEFE .byte 0x53,0x6E,0x6F,0x77,0x20,0x52,0x65,0x73,0x69,0x73,0x74,0x61,0x6E,0x63,0x65,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 37
+0049AF11 @snowresistancered1skname:                                   ; asm/msg/eng/SkillName.asm line 38
+0049AF11 .byte 0x53,0x6E,0x6F,0x77,0x20,0x52,0x65,0x73,0x69,0x73,0x74,0x61,0x6E,0x63,0x65,0x20,0x2D,0x31,0x00; asm/msg/eng/SkillName.asm line 39
+0049AF24 @stealthskname:                                              ; asm/msg/eng/SkillName.asm line 40
+0049AF24 .byte 0x53,0x74,0x65,0x61,0x6C,0x74,0x68,0x00                ; asm/msg/eng/SkillName.asm line 41
+0049AF2C @tauntskname:                                                ; asm/msg/eng/SkillName.asm line 42
+0049AF2C .byte 0x54,0x61,0x75,0x6E,0x74,0x00                          ; asm/msg/eng/SkillName.asm line 43
+0049AF32 @healthadd10skname:                                          ; asm/msg/eng/SkillName.asm line 44
+0049AF32 .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2B,0x31,0x30,0x00 ; asm/msg/eng/SkillName.asm line 45
+0049AF3D @healthadd20skname:                                          ; asm/msg/eng/SkillName.asm line 46
+0049AF3D .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2B,0x32,0x30,0x00 ; asm/msg/eng/SkillName.asm line 47
+0049AF48 @healthadd30skname:                                          ; asm/msg/eng/SkillName.asm line 48
+0049AF48 .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2B,0x33,0x30,0x00 ; asm/msg/eng/SkillName.asm line 49
+0049AF53 @healthred10skname:                                          ; asm/msg/eng/SkillName.asm line 50
+0049AF53 .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2D,0x31,0x30,0x00 ; asm/msg/eng/SkillName.asm line 51
+0049AF5E @healthred20skname:                                          ; asm/msg/eng/SkillName.asm line 52
+0049AF5E .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2D,0x32,0x30,0x00 ; asm/msg/eng/SkillName.asm line 53
+0049AF69 @healthred30skname:                                          ; asm/msg/eng/SkillName.asm line 54
+0049AF69 .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x20,0x2D,0x33,0x30,0x00 ; asm/msg/eng/SkillName.asm line 55
+0049AF74 @damagerecspeedadd1skname:                                   ; asm/msg/eng/SkillName.asm line 56
+0049AF74 .byte 0x44,0x61,0x6D,0x61,0x67,0x65,0x20,0x52,0x65,0x63,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 57
+0049AF88 @damagerecspeedadd2skname:                                   ; asm/msg/eng/SkillName.asm line 58
+0049AF88 .byte 0x44,0x61,0x6D,0x61,0x67,0x65,0x20,0x52,0x65,0x63,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 59
+0049AF9C @damagerecspeedred1skname:                                   ; asm/msg/eng/SkillName.asm line 60
+0049AF9C .byte 0x44,0x61,0x6D,0x61,0x67,0x65,0x20,0x52,0x65,0x63,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2D,0x31,0x00; asm/msg/eng/SkillName.asm line 61
+0049AFB0 @damagerecspeedred2skname:                                   ; asm/msg/eng/SkillName.asm line 62
+0049AFB0 .byte 0x44,0x61,0x6D,0x61,0x67,0x65,0x20,0x52,0x65,0x63,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2D,0x32,0x00; asm/msg/eng/SkillName.asm line 63
+0049AFC4 @sharpswordskname:                                           ; asm/msg/eng/SkillName.asm line 64
+0049AFC4 .byte 0x53,0x68,0x61,0x72,0x70,0x20,0x53,0x77,0x6F,0x72,0x64,0x00; asm/msg/eng/SkillName.asm line 65
+0049AFD0 @bluntskname:                                                ; asm/msg/eng/SkillName.asm line 66
+0049AFD0 .byte 0x42,0x6C,0x75,0x6E,0x74,0x00                          ; asm/msg/eng/SkillName.asm line 67
+0049AFD6 @sharpnessadd1skname:                                        ; asm/msg/eng/SkillName.asm line 68
+0049AFD6 .byte 0x53,0x68,0x61,0x72,0x70,0x6E,0x65,0x73,0x73,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 69
+0049AFE3 @sharpnessred1skname:                                        ; asm/msg/eng/SkillName.asm line 70
+0049AFE3 .byte 0x53,0x68,0x61,0x72,0x70,0x6E,0x65,0x73,0x73,0x20,0x2D,0x31,0x00; asm/msg/eng/SkillName.asm line 71
+0049AFF0 @espskname:                                                  ; asm/msg/eng/SkillName.asm line 72
+0049AFF0 .byte 0x45,0x53,0x50,0x00                                    ; asm/msg/eng/SkillName.asm line 73
+0049AFF4 @recklessabandonadd1skname:                                  ; asm/msg/eng/SkillName.asm line 74
+0049AFF4 .byte 0x52,0x65,0x63,0x6B,0x6C,0x65,0x73,0x73,0x20,0x41,0x62,0x61,0x6E,0x64,0x6F,0x6E,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 75
+0049B007 @recklessabandonadd2skname:                                  ; asm/msg/eng/SkillName.asm line 76
+0049B007 .byte 0x52,0x65,0x63,0x6B,0x6C,0x65,0x73,0x73,0x20,0x41,0x62,0x61,0x6E,0x64,0x6F,0x6E,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 77
+0049B01A @sharpeningsklincskname:                                     ; asm/msg/eng/SkillName.asm line 78
+0049B01A .byte 0x53,0x68,0x61,0x72,0x70,0x65,0x6E,0x69,0x6E,0x67,0x20,0x53,0x6B,0x6C,0x20,0x49,0x6E,0x63,0x00; asm/msg/eng/SkillName.asm line 79
+0049B02D @sharpeningsklhalfskname:                                    ; asm/msg/eng/SkillName.asm line 80
+0049B02D .byte 0x53,0x68,0x61,0x72,0x70,0x65,0x6E,0x69,0x6E,0x67,0x20,0x53,0x6B,0x6C,0x20,0x48,0x61,0x6C,0x66,0x00; asm/msg/eng/SkillName.asm line 81
+0049B041 @guardadd1skname:                                            ; asm/msg/eng/SkillName.asm line 82
+0049B041 .byte 0x47,0x75,0x61,0x72,0x64,0x20,0x2B,0x31,0x00           ; asm/msg/eng/SkillName.asm line 83
+0049B04A @guardadd2skname:                                            ; asm/msg/eng/SkillName.asm line 84
+0049B04A .byte 0x47,0x75,0x61,0x72,0x64,0x20,0x2B,0x32,0x00           ; asm/msg/eng/SkillName.asm line 85
+0049B053 @guardred1skname:                                            ; asm/msg/eng/SkillName.asm line 86
+0049B053 .byte 0x47,0x75,0x61,0x72,0x64,0x20,0x2D,0x31,0x00           ; asm/msg/eng/SkillName.asm line 87
+0049B05C @guardred2skname:                                            ; asm/msg/eng/SkillName.asm line 88
+0049B05C .byte 0x47,0x75,0x61,0x72,0x64,0x20,0x2D,0x32,0x00           ; asm/msg/eng/SkillName.asm line 89
+0049B065 @autoredguardskname:                                         ; asm/msg/eng/SkillName.asm line 90
+0049B065 .byte 0x41,0x75,0x74,0x6F,0x2D,0x47,0x75,0x61,0x72,0x64,0x00 ; asm/msg/eng/SkillName.asm line 91
+0049B070 @throwingskillupskname:                                      ; asm/msg/eng/SkillName.asm line 92
+0049B070 .byte 0x54,0x68,0x72,0x6F,0x77,0x69,0x6E,0x67,0x20,0x53,0x6B,0x69,0x6C,0x6C,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 93
+0049B082 @reloadingspeedadd1skname:                                   ; asm/msg/eng/SkillName.asm line 94
+0049B082 .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x69,0x6E,0x67,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 95
+0049B095 @reloadingspeedadd2skname:                                   ; asm/msg/eng/SkillName.asm line 96
+0049B095 .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x69,0x6E,0x67,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 97
+0049B0A8 @reloadingspeedadd3skname:                                   ; asm/msg/eng/SkillName.asm line 98
+0049B0A8 .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x69,0x6E,0x67,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2B,0x33,0x00; asm/msg/eng/SkillName.asm line 99
+0049B0BB @reloadingspeedred1skname:                                   ; asm/msg/eng/SkillName.asm line 100
+0049B0BB .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x69,0x6E,0x67,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2D,0x31,0x00; asm/msg/eng/SkillName.asm line 101
+0049B0CE @reloadingspeedred2skname:                                   ; asm/msg/eng/SkillName.asm line 102
+0049B0CE .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x69,0x6E,0x67,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x2D,0x32,0x00; asm/msg/eng/SkillName.asm line 103
+0049B0E1 @rapidfireskname:                                            ; asm/msg/eng/SkillName.asm line 104
+0049B0E1 .byte 0x52,0x61,0x70,0x69,0x64,0x20,0x46,0x69,0x72,0x65,0x00 ; asm/msg/eng/SkillName.asm line 105
+0049B0EC @recoilreductionadd1skname:                                  ; asm/msg/eng/SkillName.asm line 106
+0049B0EC .byte 0x52,0x65,0x63,0x6F,0x69,0x6C,0x20,0x52,0x65,0x64,0x75,0x63,0x74,0x69,0x6F,0x6E,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 107
+0049B100 @recoilreductionadd2skname:                                  ; asm/msg/eng/SkillName.asm line 108
+0049B100 .byte 0x52,0x65,0x63,0x6F,0x69,0x6C,0x20,0x52,0x65,0x64,0x75,0x63,0x74,0x69,0x6F,0x6E,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 109
+0049B114 @normalsrapidbowupskname:                                    ; asm/msg/eng/SkillName.asm line 110
+0049B114 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x53,0x2F,0x52,0x61,0x70,0x69,0x64,0x42,0x6F,0x77,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 111
+0049B128 @piercespiercebowupskname:                                   ; asm/msg/eng/SkillName.asm line 112
+0049B128 .byte 0x50,0x69,0x65,0x72,0x63,0x65,0x53,0x2F,0x50,0x69,0x65,0x72,0x63,0x65,0x42,0x6F,0x77,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 113
+0049B13D @pelletsscattrbowupskname:                                   ; asm/msg/eng/SkillName.asm line 114
+0049B13D .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x53,0x2F,0x53,0x63,0x61,0x74,0x74,0x72,0x42,0x6F,0x77,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 115
+0049B152 @normalslv1addskname:                                        ; asm/msg/eng/SkillName.asm line 116
+0049B152 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x20,0x53,0x20,0x4C,0x56,0x31,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 117
+0049B163 @normalsalllvaddskname:                                      ; asm/msg/eng/SkillName.asm line 118
+0049B163 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x20,0x53,0x20,0x41,0x6C,0x6C,0x20,0x4C,0x56,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 119
+0049B177 @pierceslv1addskname:                                        ; asm/msg/eng/SkillName.asm line 120
+0049B177 .byte 0x50,0x69,0x65,0x72,0x63,0x65,0x20,0x53,0x20,0x4C,0x56,0x31,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 121
+0049B188 @normalslv12addskname:                                       ; asm/msg/eng/SkillName.asm line 122
+0049B188 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x20,0x53,0x20,0x4C,0x56,0x31,0x26,0x32,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 123
+0049B19B @piercesalllvaddskname:                                      ; asm/msg/eng/SkillName.asm line 124
+0049B19B .byte 0x50,0x69,0x65,0x72,0x63,0x65,0x20,0x53,0x20,0x41,0x6C,0x6C,0x20,0x4C,0x56,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 125
+0049B1AF @pelletslv1addskname:                                        ; asm/msg/eng/SkillName.asm line 126
+0049B1AF .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x20,0x53,0x20,0x4C,0x56,0x31,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 127
+0049B1C0 @pelletslv12addskname:                                       ; asm/msg/eng/SkillName.asm line 128
+0049B1C0 .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x20,0x53,0x20,0x4C,0x56,0x31,0x26,0x32,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 129
+0049B1D3 @pelletsalllvaddskname:                                      ; asm/msg/eng/SkillName.asm line 130
+0049B1D3 .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x20,0x53,0x20,0x41,0x6C,0x6C,0x20,0x4C,0x56,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 131
+0049B1E7 @cragslv1addskname:                                          ; asm/msg/eng/SkillName.asm line 132
+0049B1E7 .byte 0x43,0x72,0x61,0x67,0x20,0x53,0x20,0x4C,0x56,0x31,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 133
+0049B1F6 @cragslv12addskname:                                         ; asm/msg/eng/SkillName.asm line 134
+0049B1F6 .byte 0x43,0x72,0x61,0x67,0x20,0x53,0x20,0x4C,0x56,0x31,0x26,0x32,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 135
+0049B207 @cragsalllvaddskname:                                        ; asm/msg/eng/SkillName.asm line 136
+0049B207 .byte 0x43,0x72,0x61,0x67,0x20,0x53,0x20,0x41,0x6C,0x6C,0x20,0x4C,0x56,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 137
+0049B219 @clustslv1addskname:                                         ; asm/msg/eng/SkillName.asm line 138
+0049B219 .byte 0x43,0x6C,0x75,0x73,0x74,0x20,0x53,0x20,0x4C,0x56,0x31,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 139
+0049B229 @clustslv12addskname:                                        ; asm/msg/eng/SkillName.asm line 140
+0049B229 .byte 0x43,0x6C,0x75,0x73,0x74,0x20,0x53,0x20,0x4C,0x56,0x31,0x26,0x32,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 141
+0049B23B @clustsalllvaddskname:                                       ; asm/msg/eng/SkillName.asm line 142
+0049B23B .byte 0x43,0x6C,0x75,0x73,0x74,0x20,0x53,0x20,0x41,0x6C,0x6C,0x20,0x4C,0x56,0x20,0x41,0x64,0x64,0x00; asm/msg/eng/SkillName.asm line 143
+0049B24E @abnormalstsatkupskname:                                     ; asm/msg/eng/SkillName.asm line 144
+0049B24E .byte 0x41,0x62,0x6E,0x6F,0x72,0x6D,0x61,0x6C,0x20,0x53,0x74,0x73,0x20,0x41,0x74,0x6B,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 145
+0049B262 @bomberskname:                                               ; asm/msg/eng/SkillName.asm line 146
+0049B262 .byte 0x42,0x6F,0x6D,0x62,0x65,0x72,0x00                     ; asm/msg/eng/SkillName.asm line 147
+0049B269 @hungerhalvedskname:                                         ; asm/msg/eng/SkillName.asm line 148
+0049B269 .byte 0x48,0x75,0x6E,0x67,0x65,0x72,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 149
+0049B277 @hungernegatedskname:                                        ; asm/msg/eng/SkillName.asm line 150
+0049B277 .byte 0x48,0x75,0x6E,0x67,0x65,0x72,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 151
+0049B286 @hungerincreaseloskname:                                     ; asm/msg/eng/SkillName.asm line 152
+0049B286 .byte 0x48,0x75,0x6E,0x67,0x65,0x72,0x20,0x49,0x6E,0x63,0x72,0x65,0x61,0x73,0x65,0x20,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 153
+0049B29B @hungerincreasehiskname:                                     ; asm/msg/eng/SkillName.asm line 154
+0049B29B .byte 0x48,0x75,0x6E,0x67,0x65,0x72,0x20,0x49,0x6E,0x63,0x72,0x65,0x61,0x73,0x65,0x20,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 155
+0049B2B0 @filledupskname:                                             ; asm/msg/eng/SkillName.asm line 156
+0049B2B0 .byte 0x46,0x69,0x6C,0x6C,0x65,0x64,0x20,0x55,0x70,0x00      ; asm/msg/eng/SkillName.asm line 157
+0049B2BA @scavengerskname:                                            ; asm/msg/eng/SkillName.asm line 158
+0049B2BA .byte 0x53,0x63,0x61,0x76,0x65,0x6E,0x67,0x65,0x72,0x00      ; asm/msg/eng/SkillName.asm line 159
+0049B2C4 @attackupsmallskname:                                        ; asm/msg/eng/SkillName.asm line 160
+0049B2C4 .byte 0x41,0x74,0x74,0x61,0x63,0x6B,0x20,0x55,0x70,0x20,0x28,0x53,0x6D,0x61,0x6C,0x6C,0x29,0x00; asm/msg/eng/SkillName.asm line 161
+0049B2D6 @attackupmediumskname:                                       ; asm/msg/eng/SkillName.asm line 162
+0049B2D6 .byte 0x41,0x74,0x74,0x61,0x63,0x6B,0x20,0x55,0x70,0x20,0x28,0x4D,0x65,0x64,0x69,0x75,0x6D,0x29,0x00; asm/msg/eng/SkillName.asm line 163
+0049B2E9 @attackuplargeskname:                                        ; asm/msg/eng/SkillName.asm line 164
+0049B2E9 .byte 0x41,0x74,0x74,0x61,0x63,0x6B,0x20,0x55,0x70,0x20,0x28,0x4C,0x61,0x72,0x67,0x65,0x29,0x00; asm/msg/eng/SkillName.asm line 165
+0049B2FB @defenseadd20skname:                                         ; asm/msg/eng/SkillName.asm line 166
+0049B2FB .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2B,0x32,0x30,0x00; asm/msg/eng/SkillName.asm line 167
+0049B307 @defenseadd30skname:                                         ; asm/msg/eng/SkillName.asm line 168
+0049B307 .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2B,0x33,0x30,0x00; asm/msg/eng/SkillName.asm line 169
+0049B313 @defenseadd40skname:                                         ; asm/msg/eng/SkillName.asm line 170
+0049B313 .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2B,0x34,0x30,0x00; asm/msg/eng/SkillName.asm line 171
+0049B31F @defensered20skname:                                         ; asm/msg/eng/SkillName.asm line 172
+0049B31F .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2D,0x32,0x30,0x00; asm/msg/eng/SkillName.asm line 173
+0049B32B @defensered30skname:                                         ; asm/msg/eng/SkillName.asm line 174
+0049B32B .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2D,0x33,0x30,0x00; asm/msg/eng/SkillName.asm line 175
+0049B337 @defensered40skname:                                         ; asm/msg/eng/SkillName.asm line 176
+0049B337 .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x20,0x2D,0x34,0x30,0x00; asm/msg/eng/SkillName.asm line 177
+0049B343 @divineprotectionskname:                                     ; asm/msg/eng/SkillName.asm line 178
+0049B343 .byte 0x44,0x69,0x76,0x69,0x6E,0x65,0x20,0x50,0x72,0x6F,0x74,0x65,0x63,0x74,0x69,0x6F,0x6E,0x00; asm/msg/eng/SkillName.asm line 179
+0049B355 @demonicprotectionskname:                                    ; asm/msg/eng/SkillName.asm line 180
+0049B355 .byte 0x44,0x65,0x6D,0x6F,0x6E,0x69,0x63,0x20,0x50,0x72,0x6F,0x74,0x65,0x63,0x74,0x69,0x6F,0x6E,0x00; asm/msg/eng/SkillName.asm line 181
+0049B368 @earplugskname:                                              ; asm/msg/eng/SkillName.asm line 182
+0049B368 .byte 0x45,0x61,0x72,0x70,0x6C,0x75,0x67,0x00                ; asm/msg/eng/SkillName.asm line 183
+0049B370 @highgradeearplugskname:                                     ; asm/msg/eng/SkillName.asm line 184
+0049B370 .byte 0x48,0x69,0x67,0x68,0x20,0x47,0x72,0x61,0x64,0x65,0x20,0x45,0x61,0x72,0x70,0x6C,0x75,0x67,0x00; asm/msg/eng/SkillName.asm line 185
+0049B383 @stealnoeffectskname:                                        ; asm/msg/eng/SkillName.asm line 186
+0049B383 .byte 0x53,0x74,0x65,0x61,0x6C,0x20,0x4E,0x6F,0x20,0x45,0x66,0x66,0x65,0x63,0x74,0x00; asm/msg/eng/SkillName.asm line 187
+0049B393 @wideareaadd1skname:                                         ; asm/msg/eng/SkillName.asm line 188
+0049B393 .byte 0x57,0x69,0x64,0x65,0x20,0x41,0x72,0x65,0x61,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 189
+0049B3A0 @wideareaadd2skname:                                         ; asm/msg/eng/SkillName.asm line 190
+0049B3A0 .byte 0x57,0x69,0x64,0x65,0x20,0x41,0x72,0x65,0x61,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 191
+0049B3AD @backpackingexpertskname:                                    ; asm/msg/eng/SkillName.asm line 192
+0049B3AD .byte 0x42,0x61,0x63,0x6B,0x70,0x61,0x63,0x6B,0x69,0x6E,0x67,0x20,0x45,0x78,0x70,0x65,0x72,0x74,0x00; asm/msg/eng/SkillName.asm line 193
+0049B3C0 @allresadd3skname:                                           ; asm/msg/eng/SkillName.asm line 194
+0049B3C0 .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00 ; asm/msg/eng/SkillName.asm line 195
+0049B3CB @allresadd5skname:                                           ; asm/msg/eng/SkillName.asm line 196
+0049B3CB .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00 ; asm/msg/eng/SkillName.asm line 197
+0049B3D6 @allresadd10skname:                                          ; asm/msg/eng/SkillName.asm line 198
+0049B3D6 .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 199
+0049B3E2 @allresred3skname:                                           ; asm/msg/eng/SkillName.asm line 200
+0049B3E2 .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00 ; asm/msg/eng/SkillName.asm line 201
+0049B3ED @allresred5skname:                                           ; asm/msg/eng/SkillName.asm line 202
+0049B3ED .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00 ; asm/msg/eng/SkillName.asm line 203
+0049B3F8 @allresred10skname:                                          ; asm/msg/eng/SkillName.asm line 204
+0049B3F8 .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 205
+0049B404 @fireresadd3skname:                                          ; asm/msg/eng/SkillName.asm line 206
+0049B404 .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00; asm/msg/eng/SkillName.asm line 207
+0049B410 @fireresadd5skname:                                          ; asm/msg/eng/SkillName.asm line 208
+0049B410 .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00; asm/msg/eng/SkillName.asm line 209
+0049B41C @fireresadd10skname:                                         ; asm/msg/eng/SkillName.asm line 210
+0049B41C .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 211
+0049B429 @fireresred3skname:                                          ; asm/msg/eng/SkillName.asm line 212
+0049B429 .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00; asm/msg/eng/SkillName.asm line 213
+0049B435 @fireresred5skname:                                          ; asm/msg/eng/SkillName.asm line 214
+0049B435 .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00; asm/msg/eng/SkillName.asm line 215
+0049B441 @fireresred10skname:                                         ; asm/msg/eng/SkillName.asm line 216
+0049B441 .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 217
+0049B44E @waterresadd3skname:                                         ; asm/msg/eng/SkillName.asm line 218
+0049B44E .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00; asm/msg/eng/SkillName.asm line 219
+0049B45B @waterresadd5skname:                                         ; asm/msg/eng/SkillName.asm line 220
+0049B45B .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00; asm/msg/eng/SkillName.asm line 221
+0049B468 @waterresadd10skname:                                        ; asm/msg/eng/SkillName.asm line 222
+0049B468 .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 223
+0049B476 @waterresred3skname:                                         ; asm/msg/eng/SkillName.asm line 224
+0049B476 .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00; asm/msg/eng/SkillName.asm line 225
+0049B483 @waterresred5skname:                                         ; asm/msg/eng/SkillName.asm line 226
+0049B483 .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00; asm/msg/eng/SkillName.asm line 227
+0049B490 @waterresred10skname:                                        ; asm/msg/eng/SkillName.asm line 228
+0049B490 .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 229
+0049B49E @iceresadd3skname:                                           ; asm/msg/eng/SkillName.asm line 230
+0049B49E .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00 ; asm/msg/eng/SkillName.asm line 231
+0049B4A9 @iceresadd5skname:                                           ; asm/msg/eng/SkillName.asm line 232
+0049B4A9 .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00 ; asm/msg/eng/SkillName.asm line 233
+0049B4B4 @iceresadd10skname:                                          ; asm/msg/eng/SkillName.asm line 234
+0049B4B4 .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 235
+0049B4C0 @iceresred3skname:                                           ; asm/msg/eng/SkillName.asm line 236
+0049B4C0 .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00 ; asm/msg/eng/SkillName.asm line 237
+0049B4CB @iceresred5skname:                                           ; asm/msg/eng/SkillName.asm line 238
+0049B4CB .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00 ; asm/msg/eng/SkillName.asm line 239
+0049B4D6 @iceresred10skname:                                          ; asm/msg/eng/SkillName.asm line 240
+0049B4D6 .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 241
+0049B4E2 @thunderresadd3skname:                                       ; asm/msg/eng/SkillName.asm line 242
+0049B4E2 .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00; asm/msg/eng/SkillName.asm line 243
+0049B4F1 @thunderresadd5skname:                                       ; asm/msg/eng/SkillName.asm line 244
+0049B4F1 .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00; asm/msg/eng/SkillName.asm line 245
+0049B500 @thunderresadd10skname:                                      ; asm/msg/eng/SkillName.asm line 246
+0049B500 .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 247
+0049B510 @thunderresred3skname:                                       ; asm/msg/eng/SkillName.asm line 248
+0049B510 .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00; asm/msg/eng/SkillName.asm line 249
+0049B51F @thunderresred5skname:                                       ; asm/msg/eng/SkillName.asm line 250
+0049B51F .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00; asm/msg/eng/SkillName.asm line 251
+0049B52E @thunderresred10skname:                                      ; asm/msg/eng/SkillName.asm line 252
+0049B52E .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 253
+0049B53E @dragonresadd3skname:                                        ; asm/msg/eng/SkillName.asm line 254
+0049B53E .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2B,0x33,0x00; asm/msg/eng/SkillName.asm line 255
+0049B54C @dragonresadd5skname:                                        ; asm/msg/eng/SkillName.asm line 256
+0049B54C .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2B,0x35,0x00; asm/msg/eng/SkillName.asm line 257
+0049B55A @dragonresadd10skname:                                       ; asm/msg/eng/SkillName.asm line 258
+0049B55A .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2B,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 259
+0049B569 @dragonresred3skname:                                        ; asm/msg/eng/SkillName.asm line 260
+0049B569 .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2D,0x33,0x00; asm/msg/eng/SkillName.asm line 261
+0049B577 @dragonresred5skname:                                        ; asm/msg/eng/SkillName.asm line 262
+0049B577 .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2D,0x35,0x00; asm/msg/eng/SkillName.asm line 263
+0049B585 @dragonresred10skname:                                       ; asm/msg/eng/SkillName.asm line 264
+0049B585 .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x20,0x2D,0x31,0x30,0x00; asm/msg/eng/SkillName.asm line 265
+0049B594 @heathalvedskname:                                           ; asm/msg/eng/SkillName.asm line 266
+0049B594 .byte 0x48,0x65,0x61,0x74,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 267
+0049B5A0 @heatcancelloskname:                                         ; asm/msg/eng/SkillName.asm line 268
+0049B5A0 .byte 0x48,0x65,0x61,0x74,0x20,0x43,0x61,0x6E,0x63,0x65,0x6C,0x20,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 269
+0049B5B1 @heatcancelhiskname:                                         ; asm/msg/eng/SkillName.asm line 270
+0049B5B1 .byte 0x48,0x65,0x61,0x74,0x20,0x43,0x61,0x6E,0x63,0x65,0x6C,0x20,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 271
+0049B5C2 @heatincloskname:                                            ; asm/msg/eng/SkillName.asm line 272
+0049B5C2 .byte 0x48,0x65,0x61,0x74,0x20,0x49,0x6E,0x63,0x20,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 273
+0049B5D0 @heatinchiskname:                                            ; asm/msg/eng/SkillName.asm line 274
+0049B5D0 .byte 0x48,0x65,0x61,0x74,0x20,0x49,0x6E,0x63,0x20,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 275
+0049B5DE @coldhalvedskname:                                           ; asm/msg/eng/SkillName.asm line 276
+0049B5DE .byte 0x43,0x6F,0x6C,0x64,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 277
+0049B5EA @coldeliminationloskname:                                    ; asm/msg/eng/SkillName.asm line 278
+0049B5EA .byte 0x43,0x6F,0x6C,0x64,0x20,0x45,0x6C,0x69,0x6D,0x69,0x6E,0x61,0x74,0x69,0x6F,0x6E,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 279
+0049B5FF @coldeliminationhiskname:                                    ; asm/msg/eng/SkillName.asm line 280
+0049B5FF .byte 0x43,0x6F,0x6C,0x64,0x20,0x45,0x6C,0x69,0x6D,0x69,0x6E,0x61,0x74,0x69,0x6F,0x6E,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 281
+0049B614 @coldincreaseloskname:                                       ; asm/msg/eng/SkillName.asm line 282
+0049B614 .byte 0x43,0x6F,0x6C,0x64,0x20,0x49,0x6E,0x63,0x72,0x65,0x61,0x73,0x65,0x20,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 283
+0049B627 @coldincreasehiskname:                                       ; asm/msg/eng/SkillName.asm line 284
+0049B627 .byte 0x43,0x6F,0x6C,0x64,0x20,0x49,0x6E,0x63,0x72,0x65,0x61,0x73,0x65,0x20,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 285
+0049B63A @lowwindresskname:                                           ; asm/msg/eng/SkillName.asm line 286
+0049B63A .byte 0x4C,0x6F,0x77,0x20,0x57,0x69,0x6E,0x64,0x20,0x52,0x65,0x73,0x00; asm/msg/eng/SkillName.asm line 287
+0049B647 @highwindresskname:                                          ; asm/msg/eng/SkillName.asm line 288
+0049B647 .byte 0x48,0x69,0x67,0x68,0x20,0x57,0x69,0x6E,0x64,0x20,0x52,0x65,0x73,0x00; asm/msg/eng/SkillName.asm line 289
+0049B655 @dragonwindbreakerskname:                                    ; asm/msg/eng/SkillName.asm line 290
+0049B655 .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x57,0x69,0x6E,0x64,0x20,0x42,0x72,0x65,0x61,0x6B,0x65,0x72,0x00; asm/msg/eng/SkillName.asm line 291
+0049B669 @farsightskname:                                             ; asm/msg/eng/SkillName.asm line 292
+0049B669 .byte 0x46,0x61,0x72,0x73,0x69,0x67,0x68,0x74,0x00           ; asm/msg/eng/SkillName.asm line 293
+0049B672 @mapunavailableskname:                                       ; asm/msg/eng/SkillName.asm line 294
+0049B672 .byte 0x4D,0x61,0x70,0x20,0x55,0x6E,0x61,0x76,0x61,0x69,0x6C,0x61,0x62,0x6C,0x65,0x00; asm/msg/eng/SkillName.asm line 295
+0049B682 @gatheringadd1skname:                                        ; asm/msg/eng/SkillName.asm line 296
+0049B682 .byte 0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 297
+0049B68F @gatheringadd2skname:                                        ; asm/msg/eng/SkillName.asm line 298
+0049B68F .byte 0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 299
+0049B69C @gatheringred1skname:                                        ; asm/msg/eng/SkillName.asm line 300
+0049B69C .byte 0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x20,0x2D,0x31,0x00; asm/msg/eng/SkillName.asm line 301
+0049B6A9 @gatheringred2skname:                                        ; asm/msg/eng/SkillName.asm line 302
+0049B6A9 .byte 0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x20,0x2D,0x32,0x00; asm/msg/eng/SkillName.asm line 303
+0049B6B6 @highspeedgatheringskname:                                   ; asm/msg/eng/SkillName.asm line 304
+0049B6B6 .byte 0x48,0x69,0x67,0x68,0x20,0x53,0x70,0x65,0x65,0x64,0x20,0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x00; asm/msg/eng/SkillName.asm line 305
+0049B6CB @spiritswhimskname:                                          ; asm/msg/eng/SkillName.asm line 306
+0049B6CB .byte 0x53,0x70,0x69,0x72,0x69,0x74,0x27,0x73,0x20,0x57,0x68,0x69,0x6D,0x00; asm/msg/eng/SkillName.asm line 307
+0049B6D9 @divinewhimskname:                                           ; asm/msg/eng/SkillName.asm line 308
+0049B6D9 .byte 0x44,0x69,0x76,0x69,0x6E,0x65,0x20,0x57,0x68,0x69,0x6D,0x00; asm/msg/eng/SkillName.asm line 309
+0049B6E5 @spectreswhimskname:                                         ; asm/msg/eng/SkillName.asm line 310
+0049B6E5 .byte 0x53,0x70,0x65,0x63,0x74,0x72,0x65,0x27,0x73,0x20,0x57,0x68,0x69,0x6D,0x00; asm/msg/eng/SkillName.asm line 311
+0049B6F4 @devilswhimskname:                                           ; asm/msg/eng/SkillName.asm line 312
+0049B6F4 .byte 0x44,0x65,0x76,0x69,0x6C,0x27,0x73,0x20,0x57,0x68,0x69,0x6D,0x00; asm/msg/eng/SkillName.asm line 313
+0049B701 @goodluckskname:                                             ; asm/msg/eng/SkillName.asm line 314
+0049B701 .byte 0x47,0x6F,0x6F,0x64,0x20,0x4C,0x75,0x63,0x6B,0x00      ; asm/msg/eng/SkillName.asm line 315
+0049B70B @luckboosterskname:                                          ; asm/msg/eng/SkillName.asm line 316
+0049B70B .byte 0x4C,0x75,0x63,0x6B,0x20,0x42,0x6F,0x6F,0x73,0x74,0x65,0x72,0x00; asm/msg/eng/SkillName.asm line 317
+0049B718 @badluckskname:                                              ; asm/msg/eng/SkillName.asm line 318
+0049B718 .byte 0x42,0x61,0x64,0x20,0x4C,0x75,0x63,0x6B,0x00           ; asm/msg/eng/SkillName.asm line 319
+0049B721 @calamityskname:                                             ; asm/msg/eng/SkillName.asm line 320
+0049B721 .byte 0x43,0x61,0x6C,0x61,0x6D,0x69,0x74,0x79,0x00           ; asm/msg/eng/SkillName.asm line 321
+0049B72A @fishingexpertskname:                                        ; asm/msg/eng/SkillName.asm line 322
+0049B72A .byte 0x46,0x69,0x73,0x68,0x69,0x6E,0x67,0x20,0x45,0x78,0x70,0x65,0x72,0x74,0x00; asm/msg/eng/SkillName.asm line 323
+0049B739 @detectskname:                                               ; asm/msg/eng/SkillName.asm line 324
+0049B739 .byte 0x44,0x65,0x74,0x65,0x63,0x74,0x00                     ; asm/msg/eng/SkillName.asm line 325
+0049B740 @autotrackerskname:                                          ; asm/msg/eng/SkillName.asm line 326
+0049B740 .byte 0x41,0x75,0x74,0x6F,0x74,0x72,0x61,0x63,0x6B,0x65,0x72,0x00; asm/msg/eng/SkillName.asm line 327
+0049B74C @healthrecitemsimprvdskname:                                 ; asm/msg/eng/SkillName.asm line 328
+0049B74C .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x52,0x65,0x63,0x49,0x74,0x65,0x6D,0x73,0x49,0x6D,0x70,0x72,0x76,0x64,0x00; asm/msg/eng/SkillName.asm line 329
+0049B761 @healthrecitemsweakndskname:                                 ; asm/msg/eng/SkillName.asm line 330
+0049B761 .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x52,0x65,0x63,0x49,0x74,0x65,0x6D,0x73,0x57,0x65,0x61,0x6B,0x6E,0x64,0x00; asm/msg/eng/SkillName.asm line 331
+0049B776 @combinesuccessadd5skname:                                   ; asm/msg/eng/SkillName.asm line 332
+0049B776 .byte 0x43,0x6F,0x6D,0x62,0x69,0x6E,0x65,0x20,0x53,0x75,0x63,0x63,0x65,0x73,0x73,0x20,0x2B,0x35,0x25,0x00; asm/msg/eng/SkillName.asm line 333
+0049B78A @combinesuccessadd10skname:                                  ; asm/msg/eng/SkillName.asm line 334
+0049B78A .byte 0x43,0x6F,0x6D,0x62,0x69,0x6E,0x65,0x20,0x53,0x75,0x63,0x63,0x65,0x73,0x73,0x20,0x2B,0x31,0x30,0x25,0x00; asm/msg/eng/SkillName.asm line 335
+0049B79F @combinesuccessadd20skname:                                  ; asm/msg/eng/SkillName.asm line 336
+0049B79F .byte 0x43,0x6F,0x6D,0x62,0x69,0x6E,0x65,0x20,0x53,0x75,0x63,0x63,0x65,0x73,0x73,0x20,0x2B,0x32,0x30,0x25,0x00; asm/msg/eng/SkillName.asm line 337
+0049B7B4 @combinesuccessred5skname:                                   ; asm/msg/eng/SkillName.asm line 338
+0049B7B4 .byte 0x43,0x6F,0x6D,0x62,0x69,0x6E,0x65,0x20,0x53,0x75,0x63,0x63,0x65,0x73,0x73,0x20,0x2D,0x35,0x25,0x00; asm/msg/eng/SkillName.asm line 339
+0049B7C8 @combinesuccessred15skname:                                  ; asm/msg/eng/SkillName.asm line 340
+0049B7C8 .byte 0x43,0x6F,0x6D,0x62,0x69,0x6E,0x65,0x20,0x53,0x75,0x63,0x63,0x65,0x73,0x73,0x20,0x2D,0x31,0x35,0x25,0x00; asm/msg/eng/SkillName.asm line 341
+0049B7DD @bulletlimitskname:                                          ; asm/msg/eng/SkillName.asm line 342
+0049B7DD .byte 0x42,0x75,0x6C,0x6C,0x65,0x74,0x20,0x4C,0x69,0x6D,0x69,0x74,0x00; asm/msg/eng/SkillName.asm line 343
+0049B7EA @alchemyskname:                                              ; asm/msg/eng/SkillName.asm line 344
+0049B7EA .byte 0x41,0x6C,0x63,0x68,0x65,0x6D,0x79,0x00                ; asm/msg/eng/SkillName.asm line 345
+0049B7F2 @torsoincreaseskname:                                        ; asm/msg/eng/SkillName.asm line 346
+0049B7F2 .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x49,0x6E,0x63,0x72,0x65,0x61,0x73,0x65,0x00; asm/msg/eng/SkillName.asm line 347
+0049B801 @torsoadd2skname:                                            ; asm/msg/eng/SkillName.asm line 348
+0049B801 .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x2B,0x32,0x00           ; asm/msg/eng/SkillName.asm line 349
+0049B80A @torsoadd1skname:                                            ; asm/msg/eng/SkillName.asm line 350
+0049B80A .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x2B,0x31,0x00           ; asm/msg/eng/SkillName.asm line 351
+0049B813 @evadeadd1skname:                                            ; asm/msg/eng/SkillName.asm line 352
+0049B813 .byte 0x45,0x76,0x61,0x64,0x65,0x20,0x2B,0x31,0x00           ; asm/msg/eng/SkillName.asm line 353
+0049B81C @evadeadd2skname:                                            ; asm/msg/eng/SkillName.asm line 354
+0049B81C .byte 0x45,0x76,0x61,0x64,0x65,0x20,0x2B,0x32,0x00           ; asm/msg/eng/SkillName.asm line 355
+0049B825 @adrenalineadd1skname:                                       ; asm/msg/eng/SkillName.asm line 356
+0049B825 .byte 0x41,0x64,0x72,0x65,0x6E,0x61,0x6C,0x69,0x6E,0x65,0x20,0x2B,0x31,0x00; asm/msg/eng/SkillName.asm line 357
+0049B833 @adrenalineadd2skname:                                       ; asm/msg/eng/SkillName.asm line 358
+0049B833 .byte 0x41,0x64,0x72,0x65,0x6E,0x61,0x6C,0x69,0x6E,0x65,0x20,0x2B,0x32,0x00; asm/msg/eng/SkillName.asm line 359
+0049B841 @worryskname:                                                ; asm/msg/eng/SkillName.asm line 360
+0049B841 .byte 0x57,0x6F,0x72,0x72,0x79,0x00                          ; asm/msg/eng/SkillName.asm line 361
+0049B847 @itemusageimproveskname:                                     ; asm/msg/eng/SkillName.asm line 362
+0049B847 .byte 0x49,0x74,0x65,0x6D,0x20,0x55,0x73,0x61,0x67,0x65,0x20,0x49,0x6D,0x70,0x72,0x6F,0x76,0x65,0x00; asm/msg/eng/SkillName.asm line 363
+0049B85A @itemusagedeclineskname:                                     ; asm/msg/eng/SkillName.asm line 364
+0049B85A .byte 0x49,0x74,0x65,0x6D,0x20,0x55,0x73,0x61,0x67,0x65,0x20,0x44,0x65,0x63,0x6C,0x69,0x6E,0x65,0x00; asm/msg/eng/SkillName.asm line 365
+0049B86D @runnerskname:                                               ; asm/msg/eng/SkillName.asm line 366
+0049B86D .byte 0x52,0x75,0x6E,0x6E,0x65,0x72,0x00                     ; asm/msg/eng/SkillName.asm line 367
+0049B874 @flatfootedskname:                                           ; asm/msg/eng/SkillName.asm line 368
+0049B874 .byte 0x46,0x6C,0x61,0x74,0x20,0x46,0x6F,0x6F,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 369
+0049B880 @capacityupskname:                                           ; asm/msg/eng/SkillName.asm line 370
+0049B880 .byte 0x43,0x61,0x70,0x61,0x63,0x69,0x74,0x79,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 371
+0049B88C @shelldeviationdownskname:                                   ; asm/msg/eng/SkillName.asm line 372
+0049B88C .byte 0x53,0x68,0x65,0x6C,0x6C,0x20,0x44,0x65,0x76,0x69,0x61,0x74,0x69,0x6F,0x6E,0x20,0x44,0x6F,0x77,0x6E,0x00; asm/msg/eng/SkillName.asm line 373
+0049B8A1 @shelldeviationupskname:                                     ; asm/msg/eng/SkillName.asm line 374
+0049B8A1 .byte 0x53,0x68,0x65,0x6C,0x6C,0x20,0x44,0x65,0x76,0x69,0x61,0x74,0x69,0x6F,0x6E,0x20,0x55,0x70,0x00; asm/msg/eng/SkillName.asm line 375
+0049B8B4 @giantseekerskname:                                          ; asm/msg/eng/SkillName.asm line 376
+0049B8B4 .byte 0x47,0x69,0x61,0x6E,0x74,0x20,0x53,0x65,0x65,0x6B,0x65,0x72,0x00; asm/msg/eng/SkillName.asm line 377
+0049B8C1 @quickeatingskname:                                          ; asm/msg/eng/SkillName.asm line 378
+0049B8C1 .byte 0x51,0x75,0x69,0x63,0x6B,0x20,0x45,0x61,0x74,0x69,0x6E,0x67,0x00; asm/msg/eng/SkillName.asm line 379
+0049B8CE @slowlifeskname:                                             ; asm/msg/eng/SkillName.asm line 380
+0049B8CE .byte 0x53,0x6C,0x6F,0x77,0x20,0x4C,0x69,0x66,0x65,0x00      ; asm/msg/eng/SkillName.asm line 381
+0049B8D8 @carvingcelebrityskname:                                     ; asm/msg/eng/SkillName.asm line 382
+0049B8D8 .byte 0x43,0x61,0x72,0x76,0x69,0x6E,0x67,0x20,0x43,0x65,0x6C,0x65,0x62,0x72,0x69,0x74,0x79,0x00; asm/msg/eng/SkillName.asm line 383
+0049B8EA @terraindamagehalfskname:                                    ; asm/msg/eng/SkillName.asm line 384
+0049B8EA .byte 0x54,0x65,0x72,0x72,0x61,0x69,0x6E,0x44,0x61,0x6D,0x61,0x67,0x65,0x48,0x61,0x6C,0x66,0x00; asm/msg/eng/SkillName.asm line 385
+0049B8FC @terraindamagenegateskname:                                  ; asm/msg/eng/SkillName.asm line 386
+0049B8FC .byte 0x54,0x65,0x72,0x72,0x61,0x69,0x6E,0x44,0x61,0x6D,0x61,0x67,0x65,0x4E,0x65,0x67,0x61,0x74,0x65,0x00; asm/msg/eng/SkillName.asm line 387
+0049B910 @terraindamageincloskname:                                   ; asm/msg/eng/SkillName.asm line 388
+0049B910 .byte 0x54,0x65,0x72,0x72,0x61,0x69,0x6E,0x44,0x61,0x6D,0x61,0x67,0x65,0x49,0x6E,0x63,0x5B,0x4C,0x6F,0x5D,0x00; asm/msg/eng/SkillName.asm line 389
+0049B925 @terraindamageinchiskname:                                   ; asm/msg/eng/SkillName.asm line 390
+0049B925 .byte 0x54,0x65,0x72,0x72,0x61,0x69,0x6E,0x44,0x61,0x6D,0x61,0x67,0x65,0x49,0x6E,0x63,0x5B,0x48,0x69,0x5D,0x00; asm/msg/eng/SkillName.asm line 391
+0049B93A @quakeresistanceskname:                                      ; asm/msg/eng/SkillName.asm line 392
+0049B93A .byte 0x51,0x75,0x61,0x6B,0x65,0x20,0x52,0x65,0x73,0x69,0x73,0x74,0x61,0x6E,0x63,0x65,0x00; asm/msg/eng/SkillName.asm line 393
+0049B94B @vocalparahalvedskname:                                      ; asm/msg/eng/SkillName.asm line 394
+0049B94B .byte 0x56,0x6F,0x63,0x61,0x6C,0x20,0x50,0x61,0x72,0x61,0x20,0x48,0x61,0x6C,0x76,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 395
+0049B95D @vocalparanegatedskname:                                     ; asm/msg/eng/SkillName.asm line 396
+0049B95D .byte 0x56,0x6F,0x63,0x61,0x6C,0x20,0x50,0x61,0x72,0x61,0x20,0x4E,0x65,0x67,0x61,0x74,0x65,0x64,0x00; asm/msg/eng/SkillName.asm line 397
+0049B970 @bbqcelebrityskname:                                         ; asm/msg/eng/SkillName.asm line 398
+0049B970 .byte 0x42,0x42,0x51,0x20,0x43,0x65,0x6C,0x65,0x62,0x72,0x69,0x74,0x79,0x00; asm/msg/eng/SkillName.asm line 399
+0049B97E @bbqmasterskname:                                            ; asm/msg/eng/SkillName.asm line 400
+0049B97E .byte 0x42,0x42,0x51,0x20,0x4D,0x61,0x73,0x74,0x65,0x72,0x00 ; asm/msg/eng/SkillName.asm line 401
+0049B989 @soredcalledbbqkingskname:                                   ; asm/msg/eng/SkillName.asm line 402
+0049B989 .byte 0x53,0x6F,0x2D,0x43,0x61,0x6C,0x6C,0x65,0x64,0x20,0x42,0x42,0x51,0x20,0x4B,0x69,0x6E,0x67,0x00; asm/msg/eng/SkillName.asm line 403
+0049B99C @gunnerymaster:                                              ; asm/msg/eng/SkillName.asm line 404
+0049B99C .byte 0x47,0x75,0x6E,0x6E,0x65,0x72,0x79,0x20,0x4D,0x61,0x73,0x74,0x65,0x72,0x00; asm/msg/eng/SkillName.asm line 405
+0049B9AB .org 0x00447140                                              ; asm/msg/eng/SkillName.asm line 407
+00447140 .word 0x0049ADF0                                             ; asm/msg/eng/SkillName.asm line 408
+00447144 .word 0x0049ADF9                                             ; asm/msg/eng/SkillName.asm line 409
+00447148 .word 0x0049AE0E                                             ; asm/msg/eng/SkillName.asm line 410
+0044714C .word 0x0049AE20                                             ; asm/msg/eng/SkillName.asm line 411
+00447150 .word 0x0049AE33                                             ; asm/msg/eng/SkillName.asm line 412
+00447154 .word 0x0049AE44                                             ; asm/msg/eng/SkillName.asm line 413
+00447158 .word 0x0049AE52                                             ; asm/msg/eng/SkillName.asm line 414
+0044715C .word 0x0049AE61                                             ; asm/msg/eng/SkillName.asm line 415
+00447160 .word 0x0049AE73                                             ; asm/msg/eng/SkillName.asm line 416
+00447164 .word 0x0049AE81                                             ; asm/msg/eng/SkillName.asm line 417
+00447168 .word 0x0049AE95                                             ; asm/msg/eng/SkillName.asm line 418
+0044716C .word 0x0049AEA7                                             ; asm/msg/eng/SkillName.asm line 419
+00447170 .word 0x0049AEB6                                             ; asm/msg/eng/SkillName.asm line 420
+00447174 .word 0x0049AEC6                                             ; asm/msg/eng/SkillName.asm line 421
+00447178 .word 0x0049AED4                                             ; asm/msg/eng/SkillName.asm line 422
+0044717C .word 0x0049AEE2                                             ; asm/msg/eng/SkillName.asm line 423
+00447180 .word 0x0049AEEB                                             ; asm/msg/eng/SkillName.asm line 424
+00447184 .word 0x0049AEFE                                             ; asm/msg/eng/SkillName.asm line 425
+00447188 .word 0x0049AF11                                             ; asm/msg/eng/SkillName.asm line 426
+0044718C .word 0x0049AF24                                             ; asm/msg/eng/SkillName.asm line 427
+00447190 .word 0x0049AF2C                                             ; asm/msg/eng/SkillName.asm line 428
+00447194 .word 0x0049AF32                                             ; asm/msg/eng/SkillName.asm line 429
+00447198 .word 0x0049AF3D                                             ; asm/msg/eng/SkillName.asm line 430
+0044719C .word 0x0049AF48                                             ; asm/msg/eng/SkillName.asm line 431
+004471A0 .word 0x0049AF53                                             ; asm/msg/eng/SkillName.asm line 432
+004471A4 .word 0x0049AF5E                                             ; asm/msg/eng/SkillName.asm line 433
+004471A8 .word 0x0049AF69                                             ; asm/msg/eng/SkillName.asm line 434
+004471AC .word 0x0049AF74                                             ; asm/msg/eng/SkillName.asm line 435
+004471B0 .word 0x0049AF88                                             ; asm/msg/eng/SkillName.asm line 436
+004471B4 .word 0x0049AF9C                                             ; asm/msg/eng/SkillName.asm line 437
+004471B8 .word 0x0049AFB0                                             ; asm/msg/eng/SkillName.asm line 438
+004471BC .word 0x0049AFC4                                             ; asm/msg/eng/SkillName.asm line 439
+004471C0 .word 0x0049AFD0                                             ; asm/msg/eng/SkillName.asm line 440
+004471C4 .word 0x0049AFD6                                             ; asm/msg/eng/SkillName.asm line 441
+004471C8 .word 0x0049AFE3                                             ; asm/msg/eng/SkillName.asm line 442
+004471CC .word 0x0049AFF0                                             ; asm/msg/eng/SkillName.asm line 443
+004471D0 .word 0x0049AFF4                                             ; asm/msg/eng/SkillName.asm line 444
+004471D4 .word 0x0049B007                                             ; asm/msg/eng/SkillName.asm line 445
+004471D8 .word 0x0049B01A                                             ; asm/msg/eng/SkillName.asm line 446
+004471DC .word 0x0049B02D                                             ; asm/msg/eng/SkillName.asm line 447
+004471E0 .word 0x0049B041                                             ; asm/msg/eng/SkillName.asm line 448
+004471E4 .word 0x0049B04A                                             ; asm/msg/eng/SkillName.asm line 449
+004471E8 .word 0x0049B053                                             ; asm/msg/eng/SkillName.asm line 450
+004471EC .word 0x0049B05C                                             ; asm/msg/eng/SkillName.asm line 451
+004471F0 .word 0x0049B065                                             ; asm/msg/eng/SkillName.asm line 452
+004471F4 .word 0x0049B070                                             ; asm/msg/eng/SkillName.asm line 453
+004471F8 .word 0x0049B082                                             ; asm/msg/eng/SkillName.asm line 454
+004471FC .word 0x0049B095                                             ; asm/msg/eng/SkillName.asm line 455
+00447200 .word 0x0049B0A8                                             ; asm/msg/eng/SkillName.asm line 456
+00447204 .word 0x0049B0BB                                             ; asm/msg/eng/SkillName.asm line 457
+00447208 .word 0x0049B0CE                                             ; asm/msg/eng/SkillName.asm line 458
+0044720C .word 0x0049B0E1                                             ; asm/msg/eng/SkillName.asm line 459
+00447210 .word 0x0049B0EC                                             ; asm/msg/eng/SkillName.asm line 460
+00447214 .word 0x0049B100                                             ; asm/msg/eng/SkillName.asm line 461
+00447218 .word 0x0049B114                                             ; asm/msg/eng/SkillName.asm line 462
+0044721C .word 0x0049B128                                             ; asm/msg/eng/SkillName.asm line 463
+00447220 .word 0x0049B13D                                             ; asm/msg/eng/SkillName.asm line 464
+00447224 .word 0x0049B152                                             ; asm/msg/eng/SkillName.asm line 465
+00447228 .word 0x0049B163                                             ; asm/msg/eng/SkillName.asm line 466
+0044722C .word 0x0049B177                                             ; asm/msg/eng/SkillName.asm line 467
+00447230 .word 0x0049B188                                             ; asm/msg/eng/SkillName.asm line 468
+00447234 .word 0x0049B19B                                             ; asm/msg/eng/SkillName.asm line 469
+00447238 .word 0x0049B1AF                                             ; asm/msg/eng/SkillName.asm line 470
+0044723C .word 0x0049B1C0                                             ; asm/msg/eng/SkillName.asm line 471
+00447240 .word 0x0049B1D3                                             ; asm/msg/eng/SkillName.asm line 472
+00447244 .word 0x0049B1E7                                             ; asm/msg/eng/SkillName.asm line 473
+00447248 .word 0x0049B1F6                                             ; asm/msg/eng/SkillName.asm line 474
+0044724C .word 0x0049B207                                             ; asm/msg/eng/SkillName.asm line 475
+00447250 .word 0x0049B219                                             ; asm/msg/eng/SkillName.asm line 476
+00447254 .word 0x0049B229                                             ; asm/msg/eng/SkillName.asm line 477
+00447258 .word 0x0049B23B                                             ; asm/msg/eng/SkillName.asm line 478
+0044725C .word 0x0049B24E                                             ; asm/msg/eng/SkillName.asm line 479
+00447260 .word 0x0049B262                                             ; asm/msg/eng/SkillName.asm line 480
+00447264 .word 0x0049B269                                             ; asm/msg/eng/SkillName.asm line 481
+00447268 .word 0x0049B277                                             ; asm/msg/eng/SkillName.asm line 482
+0044726C .word 0x0049B286                                             ; asm/msg/eng/SkillName.asm line 483
+00447270 .word 0x0049B29B                                             ; asm/msg/eng/SkillName.asm line 484
+00447274 .word 0x0049B2B0                                             ; asm/msg/eng/SkillName.asm line 485
+00447278 .word 0x0049B2BA                                             ; asm/msg/eng/SkillName.asm line 486
+0044727C .word 0x0049B2C4                                             ; asm/msg/eng/SkillName.asm line 487
+00447280 .word 0x0049B2D6                                             ; asm/msg/eng/SkillName.asm line 488
+00447284 .word 0x0049B2E9                                             ; asm/msg/eng/SkillName.asm line 489
+00447288 .word 0x0049B2FB                                             ; asm/msg/eng/SkillName.asm line 490
+0044728C .word 0x0049B307                                             ; asm/msg/eng/SkillName.asm line 491
+00447290 .word 0x0049B313                                             ; asm/msg/eng/SkillName.asm line 492
+00447294 .word 0x0049B31F                                             ; asm/msg/eng/SkillName.asm line 493
+00447298 .word 0x0049B32B                                             ; asm/msg/eng/SkillName.asm line 494
+0044729C .word 0x0049B337                                             ; asm/msg/eng/SkillName.asm line 495
+004472A0 .word 0x0049B343                                             ; asm/msg/eng/SkillName.asm line 496
+004472A4 .word 0x0049B355                                             ; asm/msg/eng/SkillName.asm line 497
+004472A8 .word 0x0049B368                                             ; asm/msg/eng/SkillName.asm line 498
+004472AC .word 0x0049B370                                             ; asm/msg/eng/SkillName.asm line 499
+004472B0 .word 0x0049B383                                             ; asm/msg/eng/SkillName.asm line 500
+004472B4 .word 0x0049B393                                             ; asm/msg/eng/SkillName.asm line 501
+004472B8 .word 0x0049B3A0                                             ; asm/msg/eng/SkillName.asm line 502
+004472BC .word 0x0049B3AD                                             ; asm/msg/eng/SkillName.asm line 503
+004472C0 .word 0x0049B3C0                                             ; asm/msg/eng/SkillName.asm line 504
+004472C4 .word 0x0049B3CB                                             ; asm/msg/eng/SkillName.asm line 505
+004472C8 .word 0x0049B3D6                                             ; asm/msg/eng/SkillName.asm line 506
+004472CC .word 0x0049B3E2                                             ; asm/msg/eng/SkillName.asm line 507
+004472D0 .word 0x0049B3ED                                             ; asm/msg/eng/SkillName.asm line 508
+004472D4 .word 0x0049B3F8                                             ; asm/msg/eng/SkillName.asm line 509
+004472D8 .word 0x0049B404                                             ; asm/msg/eng/SkillName.asm line 510
+004472DC .word 0x0049B410                                             ; asm/msg/eng/SkillName.asm line 511
+004472E0 .word 0x0049B41C                                             ; asm/msg/eng/SkillName.asm line 512
+004472E4 .word 0x0049B429                                             ; asm/msg/eng/SkillName.asm line 513
+004472E8 .word 0x0049B435                                             ; asm/msg/eng/SkillName.asm line 514
+004472EC .word 0x0049B441                                             ; asm/msg/eng/SkillName.asm line 515
+004472F0 .word 0x0049B44E                                             ; asm/msg/eng/SkillName.asm line 516
+004472F4 .word 0x0049B45B                                             ; asm/msg/eng/SkillName.asm line 517
+004472F8 .word 0x0049B468                                             ; asm/msg/eng/SkillName.asm line 518
+004472FC .word 0x0049B476                                             ; asm/msg/eng/SkillName.asm line 519
+00447300 .word 0x0049B483                                             ; asm/msg/eng/SkillName.asm line 520
+00447304 .word 0x0049B490                                             ; asm/msg/eng/SkillName.asm line 521
+00447308 .word 0x0049B49E                                             ; asm/msg/eng/SkillName.asm line 522
+0044730C .word 0x0049B4A9                                             ; asm/msg/eng/SkillName.asm line 523
+00447310 .word 0x0049B4B4                                             ; asm/msg/eng/SkillName.asm line 524
+00447314 .word 0x0049B4C0                                             ; asm/msg/eng/SkillName.asm line 525
+00447318 .word 0x0049B4CB                                             ; asm/msg/eng/SkillName.asm line 526
+0044731C .word 0x0049B4D6                                             ; asm/msg/eng/SkillName.asm line 527
+00447320 .word 0x0049B4E2                                             ; asm/msg/eng/SkillName.asm line 528
+00447324 .word 0x0049B4F1                                             ; asm/msg/eng/SkillName.asm line 529
+00447328 .word 0x0049B500                                             ; asm/msg/eng/SkillName.asm line 530
+0044732C .word 0x0049B510                                             ; asm/msg/eng/SkillName.asm line 531
+00447330 .word 0x0049B51F                                             ; asm/msg/eng/SkillName.asm line 532
+00447334 .word 0x0049B52E                                             ; asm/msg/eng/SkillName.asm line 533
+00447338 .word 0x0049B53E                                             ; asm/msg/eng/SkillName.asm line 534
+0044733C .word 0x0049B54C                                             ; asm/msg/eng/SkillName.asm line 535
+00447340 .word 0x0049B55A                                             ; asm/msg/eng/SkillName.asm line 536
+00447344 .word 0x0049B569                                             ; asm/msg/eng/SkillName.asm line 537
+00447348 .word 0x0049B577                                             ; asm/msg/eng/SkillName.asm line 538
+0044734C .word 0x0049B585                                             ; asm/msg/eng/SkillName.asm line 539
+00447350 .word 0x0049B594                                             ; asm/msg/eng/SkillName.asm line 540
+00447354 .word 0x0049B5A0                                             ; asm/msg/eng/SkillName.asm line 541
+00447358 .word 0x0049B5B1                                             ; asm/msg/eng/SkillName.asm line 542
+0044735C .word 0x0049B5C2                                             ; asm/msg/eng/SkillName.asm line 543
+00447360 .word 0x0049B5D0                                             ; asm/msg/eng/SkillName.asm line 544
+00447364 .word 0x0049B5DE                                             ; asm/msg/eng/SkillName.asm line 545
+00447368 .word 0x0049B5EA                                             ; asm/msg/eng/SkillName.asm line 546
+0044736C .word 0x0049B5FF                                             ; asm/msg/eng/SkillName.asm line 547
+00447370 .word 0x0049B614                                             ; asm/msg/eng/SkillName.asm line 548
+00447374 .word 0x0049B627                                             ; asm/msg/eng/SkillName.asm line 549
+00447378 .word 0x0049B63A                                             ; asm/msg/eng/SkillName.asm line 550
+0044737C .word 0x0049B647                                             ; asm/msg/eng/SkillName.asm line 551
+00447380 .word 0x0049B655                                             ; asm/msg/eng/SkillName.asm line 552
+00447384 .word 0x0049B669                                             ; asm/msg/eng/SkillName.asm line 553
+00447388 .word 0x0049B672                                             ; asm/msg/eng/SkillName.asm line 554
+0044738C .word 0x0049B682                                             ; asm/msg/eng/SkillName.asm line 555
+00447390 .word 0x0049B68F                                             ; asm/msg/eng/SkillName.asm line 556
+00447394 .word 0x0049B69C                                             ; asm/msg/eng/SkillName.asm line 557
+00447398 .word 0x0049B6A9                                             ; asm/msg/eng/SkillName.asm line 558
+0044739C .word 0x0049B6B6                                             ; asm/msg/eng/SkillName.asm line 559
+004473A0 .word 0x0049B6CB                                             ; asm/msg/eng/SkillName.asm line 560
+004473A4 .word 0x0049B6D9                                             ; asm/msg/eng/SkillName.asm line 561
+004473A8 .word 0x0049B6E5                                             ; asm/msg/eng/SkillName.asm line 562
+004473AC .word 0x0049B6F4                                             ; asm/msg/eng/SkillName.asm line 563
+004473B0 .word 0x0049B701                                             ; asm/msg/eng/SkillName.asm line 564
+004473B4 .word 0x0049B70B                                             ; asm/msg/eng/SkillName.asm line 565
+004473B8 .word 0x0049B718                                             ; asm/msg/eng/SkillName.asm line 566
+004473BC .word 0x0049B721                                             ; asm/msg/eng/SkillName.asm line 567
+004473C0 .word 0x0049B72A                                             ; asm/msg/eng/SkillName.asm line 568
+004473C4 .word 0x0049B739                                             ; asm/msg/eng/SkillName.asm line 569
+004473C8 .word 0x0049B740                                             ; asm/msg/eng/SkillName.asm line 570
+004473CC .word 0x0049B74C                                             ; asm/msg/eng/SkillName.asm line 571
+004473D0 .word 0x0049B761                                             ; asm/msg/eng/SkillName.asm line 572
+004473D4 .word 0x0049B776                                             ; asm/msg/eng/SkillName.asm line 573
+004473D8 .word 0x0049B78A                                             ; asm/msg/eng/SkillName.asm line 574
+004473DC .word 0x0049B79F                                             ; asm/msg/eng/SkillName.asm line 575
+004473E0 .word 0x0049B7B4                                             ; asm/msg/eng/SkillName.asm line 576
+004473E4 .word 0x0049B7C8                                             ; asm/msg/eng/SkillName.asm line 577
+004473E8 .word 0x0049B7DD                                             ; asm/msg/eng/SkillName.asm line 578
+004473EC .word 0x0049B7EA                                             ; asm/msg/eng/SkillName.asm line 579
+004473F0 .word 0x0049B7F2                                             ; asm/msg/eng/SkillName.asm line 580
+004473F4 .word 0x0049B801                                             ; asm/msg/eng/SkillName.asm line 581
+004473F8 .word 0x0049B80A                                             ; asm/msg/eng/SkillName.asm line 582
+004473FC .word 0x0049B813                                             ; asm/msg/eng/SkillName.asm line 583
+00447400 .word 0x0049B81C                                             ; asm/msg/eng/SkillName.asm line 584
+00447404 .word 0x0049B825                                             ; asm/msg/eng/SkillName.asm line 585
+00447408 .word 0x0049B833                                             ; asm/msg/eng/SkillName.asm line 586
+0044740C .word 0x0049B841                                             ; asm/msg/eng/SkillName.asm line 587
+00447410 .word 0x0049B847                                             ; asm/msg/eng/SkillName.asm line 588
+00447414 .word 0x0049B85A                                             ; asm/msg/eng/SkillName.asm line 589
+00447418 .word 0x0049B86D                                             ; asm/msg/eng/SkillName.asm line 590
+0044741C .word 0x0049B874                                             ; asm/msg/eng/SkillName.asm line 591
+00447420 .word 0x0049B880                                             ; asm/msg/eng/SkillName.asm line 592
+00447424 .word 0x0049B88C                                             ; asm/msg/eng/SkillName.asm line 593
+00447428 .word 0x0049B8A1                                             ; asm/msg/eng/SkillName.asm line 594
+0044742C .word 0x0049B8B4                                             ; asm/msg/eng/SkillName.asm line 595
+00447430 .word 0x0049B8C1                                             ; asm/msg/eng/SkillName.asm line 596
+00447434 .word 0x0049B8CE                                             ; asm/msg/eng/SkillName.asm line 597
+00447438 .word 0x0049B8D8                                             ; asm/msg/eng/SkillName.asm line 598
+0044743C .word 0x0049B8EA                                             ; asm/msg/eng/SkillName.asm line 599
+00447440 .word 0x0049B8FC                                             ; asm/msg/eng/SkillName.asm line 600
+00447444 .word 0x0049B910                                             ; asm/msg/eng/SkillName.asm line 601
+00447448 .word 0x0049B925                                             ; asm/msg/eng/SkillName.asm line 602
+0044744C .word 0x0049B93A                                             ; asm/msg/eng/SkillName.asm line 603
+00447450 .word 0x0049B94B                                             ; asm/msg/eng/SkillName.asm line 604
+00447454 .word 0x0049B95D                                             ; asm/msg/eng/SkillName.asm line 605
+00447458 .word 0x0049B970                                             ; asm/msg/eng/SkillName.asm line 606
+0044745C .word 0x0049B97E                                             ; asm/msg/eng/SkillName.asm line 607
+00447460 .word 0x0049B989                                             ; asm/msg/eng/SkillName.asm line 608
+00447464 .word 0x0049B99C                                             ; asm/msg/eng/SkillName.asm line 609
+00447468 .org 0x0049BAD8                                              ; asm/msg/eng/SkSysName.asm line 1
+0049BAD8 @nonesysname:                                                ; asm/msg/eng/SkSysName.asm line 2
+0049BAD8 .byte 0x4E,0x6F,0x6E,0x65,0x00                               ; asm/msg/eng/SkSysName.asm line 3
+0049BADD @passivesysname:                                             ; asm/msg/eng/SkSysName.asm line 4
+0049BADD .byte 0x50,0x61,0x73,0x73,0x69,0x76,0x65,0x00                ; asm/msg/eng/SkSysName.asm line 5
+0049BAE5 @fatesysname:                                                ; asm/msg/eng/SkSysName.asm line 6
+0049BAE5 .byte 0x46,0x61,0x74,0x65,0x00                               ; asm/msg/eng/SkSysName.asm line 7
+0049BAEA @backpackngsysname:                                          ; asm/msg/eng/SkSysName.asm line 8
+0049BAEA .byte 0x42,0x61,0x63,0x6B,0x70,0x61,0x63,0x6B,0x6E,0x67,0x00 ; asm/msg/eng/SkSysName.asm line 9
+0049BAF5 @autoguardsysname:                                           ; asm/msg/eng/SkSysName.asm line 10
+0049BAF5 .byte 0x41,0x75,0x74,0x6F,0x2D,0x47,0x75,0x61,0x72,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 11
+0049BB00 @guardsysname:                                               ; asm/msg/eng/SkSysName.asm line 12
+0049BB00 .byte 0x47,0x75,0x61,0x72,0x64,0x00                          ; asm/msg/eng/SkSysName.asm line 13
+0049BB06 @recoverysysname:                                            ; asm/msg/eng/SkSysName.asm line 14
+0049BB06 .byte 0x52,0x65,0x63,0x6F,0x76,0x65,0x72,0x79,0x00           ; asm/msg/eng/SkSysName.asm line 15
+0049BB0F @recspeedsysname:                                            ; asm/msg/eng/SkSysName.asm line 16
+0049BB0F .byte 0x52,0x65,0x63,0x20,0x53,0x70,0x65,0x65,0x64,0x00      ; asm/msg/eng/SkSysName.asm line 17
+0049BB19 @clustsaddsysname:                                           ; asm/msg/eng/SkSysName.asm line 18
+0049BB19 .byte 0x43,0x6C,0x75,0x73,0x74,0x53,0x20,0x41,0x64,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 19
+0049BB24 @protectionsysname:                                          ; asm/msg/eng/SkSysName.asm line 20
+0049BB24 .byte 0x50,0x72,0x6F,0x74,0x65,0x63,0x74,0x69,0x6F,0x6E,0x00 ; asm/msg/eng/SkSysName.asm line 21
+0049BB2F @thunderressysname:                                          ; asm/msg/eng/SkSysName.asm line 22
+0049BB2F .byte 0x54,0x68,0x75,0x6E,0x64,0x65,0x72,0x52,0x65,0x73,0x00 ; asm/msg/eng/SkSysName.asm line 23
+0049BB3A @piercesupsysname:                                           ; asm/msg/eng/SkSysName.asm line 24
+0049BB3A .byte 0x50,0x69,0x65,0x72,0x63,0x65,0x53,0x20,0x55,0x70,0x00 ; asm/msg/eng/SkSysName.asm line 25
+0049BB45 @piercesaddsysname:                                          ; asm/msg/eng/SkSysName.asm line 26
+0049BB45 .byte 0x50,0x69,0x65,0x72,0x63,0x65,0x53,0x41,0x64,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 27
+0049BB50 @fencingsysname:                                             ; asm/msg/eng/SkSysName.asm line 28
+0049BB50 .byte 0x46,0x65,0x6E,0x63,0x69,0x6E,0x67,0x00                ; asm/msg/eng/SkSysName.asm line 29
+0049BB58 @whimsysname:                                                ; asm/msg/eng/SkSysName.asm line 30
+0049BB58 .byte 0x57,0x68,0x69,0x6D,0x00                               ; asm/msg/eng/SkSysName.asm line 31
+0049BB5D @sharpnesssysname:                                           ; asm/msg/eng/SkSysName.asm line 32
+0049BB5D .byte 0x53,0x68,0x61,0x72,0x70,0x6E,0x65,0x73,0x73,0x00      ; asm/msg/eng/SkSysName.asm line 33
+0049BB67 @gluttonysysname:                                            ; asm/msg/eng/SkSysName.asm line 34
+0049BB67 .byte 0x47,0x6C,0x75,0x74,0x74,0x6F,0x6E,0x79,0x00           ; asm/msg/eng/SkSysName.asm line 35
+0049BB70 @sneaksysname:                                               ; asm/msg/eng/SkSysName.asm line 36
+0049BB70 .byte 0x53,0x6E,0x65,0x61,0x6B,0x00                          ; asm/msg/eng/SkSysName.asm line 37
+0049BB76 @expertsysname:                                              ; asm/msg/eng/SkSysName.asm line 38
+0049BB76 .byte 0x45,0x78,0x70,0x65,0x72,0x74,0x00                     ; asm/msg/eng/SkSysName.asm line 39
+0049BB7D @widerecovsysname:                                           ; asm/msg/eng/SkSysName.asm line 40
+0049BB7D .byte 0x57,0x69,0x64,0x65,0x20,0x52,0x65,0x63,0x6F,0x76,0x00 ; asm/msg/eng/SkSysName.asm line 41
+0049BB88 @widedetoxsysname:                                           ; asm/msg/eng/SkSysName.asm line 42
+0049BB88 .byte 0x57,0x69,0x64,0x65,0x20,0x44,0x65,0x74,0x6F,0x78,0x00 ; asm/msg/eng/SkSysName.asm line 43
+0049BB93 @attacksysname:                                              ; asm/msg/eng/SkSysName.asm line 44
+0049BB93 .byte 0x41,0x74,0x74,0x61,0x63,0x6B,0x00                     ; asm/msg/eng/SkSysName.asm line 45
+0049BB9A @gatheringsysname:                                           ; asm/msg/eng/SkSysName.asm line 46
+0049BB9A .byte 0x47,0x61,0x74,0x68,0x65,0x72,0x69,0x6E,0x67,0x00      ; asm/msg/eng/SkSysName.asm line 47
+0049BBA4 @pelletsupsysname:                                           ; asm/msg/eng/SkSysName.asm line 48
+0049BBA4 .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x53,0x20,0x55,0x70,0x00 ; asm/msg/eng/SkSysName.asm line 49
+0049BBAF @pelletsaddsysname:                                          ; asm/msg/eng/SkSysName.asm line 50
+0049BBAF .byte 0x50,0x65,0x6C,0x6C,0x65,0x74,0x53,0x41,0x64,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 51
+0049BBBA @sleepsysname:                                               ; asm/msg/eng/SkSysName.asm line 52
+0049BBBA .byte 0x53,0x6C,0x65,0x65,0x70,0x00                          ; asm/msg/eng/SkSysName.asm line 53
+0049BBC0 @allressysname:                                              ; asm/msg/eng/SkSysName.asm line 54
+0049BBC0 .byte 0x41,0x6C,0x6C,0x20,0x52,0x65,0x73,0x00                ; asm/msg/eng/SkSysName.asm line 55
+0049BBC8 @psychicvissysname:                                          ; asm/msg/eng/SkSysName.asm line 56
+0049BBC8 .byte 0x50,0x73,0x79,0x63,0x68,0x69,0x63,0x56,0x69,0x73,0x00 ; asm/msg/eng/SkSysName.asm line 57
+0049BBD3 @reloadsysname:                                              ; asm/msg/eng/SkSysName.asm line 58
+0049BBD3 .byte 0x52,0x65,0x6C,0x6F,0x61,0x64,0x00                     ; asm/msg/eng/SkSysName.asm line 59
+0049BBDA @coldressysname:                                             ; asm/msg/eng/SkSysName.asm line 60
+0049BBDA .byte 0x43,0x6F,0x6C,0x64,0x20,0x52,0x65,0x73,0x00           ; asm/msg/eng/SkSysName.asm line 61
+0049BBE3 @heatressysname:                                             ; asm/msg/eng/SkSysName.asm line 62
+0049BBE3 .byte 0x48,0x65,0x61,0x74,0x20,0x52,0x65,0x73,0x00           ; asm/msg/eng/SkSysName.asm line 63
+0049BBEC @healthsysname:                                              ; asm/msg/eng/SkSysName.asm line 64
+0049BBEC .byte 0x48,0x65,0x61,0x6C,0x74,0x68,0x00                     ; asm/msg/eng/SkSysName.asm line 65
+0049BBF3 @artisansysname:                                             ; asm/msg/eng/SkSysName.asm line 66
+0049BBF3 .byte 0x41,0x72,0x74,0x69,0x73,0x61,0x6E,0x00                ; asm/msg/eng/SkSysName.asm line 67
+0049BBFB @bigfindersysname:                                           ; asm/msg/eng/SkSysName.asm line 68
+0049BBFB .byte 0x42,0x69,0x67,0x46,0x69,0x6E,0x64,0x65,0x72,0x00      ; asm/msg/eng/SkSysName.asm line 69
+0049BC05 @shotmixsysname:                                             ; asm/msg/eng/SkSysName.asm line 70
+0049BC05 .byte 0x53,0x68,0x6F,0x74,0x20,0x4D,0x69,0x78,0x00           ; asm/msg/eng/SkSysName.asm line 71
+0049BC0E @mapsysname:                                                 ; asm/msg/eng/SkSysName.asm line 72
+0049BC0E .byte 0x4D,0x61,0x70,0x00                                    ; asm/msg/eng/SkSysName.asm line 73
+0049BC12 @hearprotctsysname:                                          ; asm/msg/eng/SkSysName.asm line 74
+0049BC12 .byte 0x48,0x65,0x61,0x72,0x50,0x72,0x6F,0x74,0x63,0x74,0x00 ; asm/msg/eng/SkSysName.asm line 75
+0049BC1D @mixsucratesysname:                                          ; asm/msg/eng/SkSysName.asm line 76
+0049BC1D .byte 0x4D,0x69,0x78,0x53,0x75,0x63,0x52,0x61,0x74,0x65,0x00 ; asm/msg/eng/SkSysName.asm line 77
+0049BC28 @normalsupsysname:                                           ; asm/msg/eng/SkSysName.asm line 78
+0049BC28 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x53,0x20,0x55,0x70,0x00 ; asm/msg/eng/SkSysName.asm line 79
+0049BC33 @normalsaddsysname:                                          ; asm/msg/eng/SkSysName.asm line 80
+0049BC33 .byte 0x4E,0x6F,0x72,0x6D,0x61,0x6C,0x53,0x41,0x64,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 81
+0049BC3E @fishingsysname:                                             ; asm/msg/eng/SkSysName.asm line 82
+0049BC3E .byte 0x46,0x69,0x73,0x68,0x69,0x6E,0x67,0x00                ; asm/msg/eng/SkSysName.asm line 83
+0049BC46 @torsoplus1sysname:                                          ; asm/msg/eng/SkSysName.asm line 84
+0049BC46 .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x2B,0x31,0x00           ; asm/msg/eng/SkSysName.asm line 85
+0049BC4F @torsoplus2sysname:                                          ; asm/msg/eng/SkSysName.asm line 86
+0049BC4F .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x2B,0x32,0x00           ; asm/msg/eng/SkSysName.asm line 87
+0049BC58 @torsoincsysname:                                            ; asm/msg/eng/SkSysName.asm line 88
+0049BC58 .byte 0x54,0x6F,0x72,0x73,0x6F,0x20,0x49,0x6E,0x63,0x00      ; asm/msg/eng/SkSysName.asm line 89
+0049BC62 @throwsysname:                                               ; asm/msg/eng/SkSysName.asm line 90
+0049BC62 .byte 0x54,0x68,0x72,0x6F,0x77,0x00                          ; asm/msg/eng/SkSysName.asm line 91
+0049BC68 @swdshrpnersysname:                                          ; asm/msg/eng/SkSysName.asm line 92
+0049BC68 .byte 0x53,0x77,0x64,0x53,0x68,0x72,0x70,0x6E,0x65,0x72,0x00 ; asm/msg/eng/SkSysName.asm line 93
+0049BC73 @poisonsysname:                                              ; asm/msg/eng/SkSysName.asm line 94
+0049BC73 .byte 0x50,0x6F,0x69,0x73,0x6F,0x6E,0x00                     ; asm/msg/eng/SkSysName.asm line 95
+0049BC7A @spcattacksysname:                                           ; asm/msg/eng/SkSysName.asm line 96
+0049BC7A .byte 0x53,0x70,0x63,0x20,0x41,0x74,0x74,0x61,0x63,0x6B,0x00 ; asm/msg/eng/SkSysName.asm line 97
+0049BC85 @meatsysname:                                                ; asm/msg/eng/SkSysName.asm line 98
+0049BC85 .byte 0x4D,0x65,0x61,0x74,0x00                               ; asm/msg/eng/SkSysName.asm line 99
+0049BC8A @antitheftsysname:                                           ; asm/msg/eng/SkSysName.asm line 100
+0049BC8A .byte 0x41,0x6E,0x74,0x69,0x2D,0x54,0x68,0x65,0x66,0x74,0x00 ; asm/msg/eng/SkSysName.asm line 101
+0049BC95 @bombstrupsysname:                                           ; asm/msg/eng/SkSysName.asm line 102
+0049BC95 .byte 0x42,0x6F,0x6D,0x62,0x53,0x74,0x72,0x55,0x70,0x00      ; asm/msg/eng/SkSysName.asm line 103
+0049BC9F @hungersysname:                                              ; asm/msg/eng/SkSysName.asm line 104
+0049BC9F .byte 0x48,0x75,0x6E,0x67,0x65,0x72,0x00                     ; asm/msg/eng/SkSysName.asm line 105
+0049BCA6 @recoilsysname:                                              ; asm/msg/eng/SkSysName.asm line 106
+0049BCA6 .byte 0x52,0x65,0x63,0x6F,0x69,0x6C,0x00                     ; asm/msg/eng/SkSysName.asm line 107
+0049BCAD @fireressysname:                                             ; asm/msg/eng/SkSysName.asm line 108
+0049BCAD .byte 0x46,0x69,0x72,0x65,0x20,0x52,0x65,0x73,0x00           ; asm/msg/eng/SkSysName.asm line 109
+0049BCB6 @windpresssysname:                                           ; asm/msg/eng/SkSysName.asm line 110
+0049BCB6 .byte 0x57,0x69,0x6E,0x64,0x50,0x72,0x65,0x73,0x73,0x00      ; asm/msg/eng/SkSysName.asm line 111
+0049BCC0 @hornsysname:                                                ; asm/msg/eng/SkSysName.asm line 112
+0049BCC0 .byte 0x48,0x6F,0x72,0x6E,0x00                               ; asm/msg/eng/SkSysName.asm line 113
+0049BCC5 @defensesysname:                                             ; asm/msg/eng/SkSysName.asm line 114
+0049BCC5 .byte 0x44,0x65,0x66,0x65,0x6E,0x73,0x65,0x00                ; asm/msg/eng/SkSysName.asm line 115
+0049BCCD @paralysissysname:                                           ; asm/msg/eng/SkSysName.asm line 116
+0049BCCD .byte 0x50,0x61,0x72,0x61,0x6C,0x79,0x73,0x69,0x73,0x00      ; asm/msg/eng/SkSysName.asm line 117
+0049BCD7 @waterressysname:                                            ; asm/msg/eng/SkSysName.asm line 118
+0049BCD7 .byte 0x57,0x61,0x74,0x65,0x72,0x20,0x52,0x65,0x73,0x00      ; asm/msg/eng/SkSysName.asm line 119
+0049BCE1 @dragonressysname:                                           ; asm/msg/eng/SkSysName.asm line 120
+0049BCE1 .byte 0x44,0x72,0x61,0x67,0x6F,0x6E,0x20,0x52,0x65,0x73,0x00 ; asm/msg/eng/SkSysName.asm line 121
+0049BCEC @cragsaddsysname:                                            ; asm/msg/eng/SkSysName.asm line 122
+0049BCEC .byte 0x43,0x72,0x61,0x67,0x20,0x53,0x20,0x41,0x64,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 123
+0049BCF7 @alchemysysname:                                             ; asm/msg/eng/SkSysName.asm line 124
+0049BCF7 .byte 0x41,0x6C,0x63,0x68,0x65,0x6D,0x79,0x00                ; asm/msg/eng/SkSysName.asm line 125
+0049BCFF @rapidfiresysname:                                           ; asm/msg/eng/SkSysName.asm line 126
+0049BCFF .byte 0x52,0x61,0x70,0x69,0x64,0x46,0x69,0x72,0x65,0x00      ; asm/msg/eng/SkSysName.asm line 127
+0049BD09 @hispdgathrsysname:                                          ; asm/msg/eng/SkSysName.asm line 128
+0049BD09 .byte 0x48,0x69,0x53,0x70,0x64,0x47,0x61,0x74,0x68,0x72,0x00 ; asm/msg/eng/SkSysName.asm line 129
+0049BD14 @evadesysname:                                               ; asm/msg/eng/SkSysName.asm line 130
+0049BD14 .byte 0x45,0x76,0x61,0x64,0x65,0x00                          ; asm/msg/eng/SkSysName.asm line 131
+0049BD1A @potentialsysname:                                           ; asm/msg/eng/SkSysName.asm line 132
+0049BD1A .byte 0x50,0x6F,0x74,0x65,0x6E,0x74,0x69,0x61,0x6C,0x00      ; asm/msg/eng/SkSysName.asm line 133
+0049BD24 @everlastngsysname:                                          ; asm/msg/eng/SkSysName.asm line 134
+0049BD24 .byte 0x45,0x76,0x65,0x72,0x6C,0x61,0x73,0x74,0x6E,0x67,0x00 ; asm/msg/eng/SkSysName.asm line 135
+0049BD2F @staminasysname:                                             ; asm/msg/eng/SkSysName.asm line 136
+0049BD2F .byte 0x53,0x74,0x61,0x6D,0x69,0x6E,0x61,0x00                ; asm/msg/eng/SkSysName.asm line 137
+0049BD37 @capacitysysname:                                            ; asm/msg/eng/SkSysName.asm line 138
+0049BD37 .byte 0x43,0x61,0x70,0x61,0x63,0x69,0x74,0x79,0x00           ; asm/msg/eng/SkSysName.asm line 139
+0049BD40 @precisionsysname:                                           ; asm/msg/eng/SkSysName.asm line 140
+0049BD40 .byte 0x50,0x72,0x65,0x63,0x69,0x73,0x69,0x6F,0x6E,0x00      ; asm/msg/eng/SkSysName.asm line 141
+0049BD4A @monstersysname:                                             ; asm/msg/eng/SkSysName.asm line 142
+0049BD4A .byte 0x4D,0x6F,0x6E,0x73,0x74,0x65,0x72,0x00                ; asm/msg/eng/SkSysName.asm line 143
+0049BD52 @cookingsysname:                                             ; asm/msg/eng/SkSysName.asm line 144
+0049BD52 .byte 0x43,0x6F,0x6F,0x6B,0x69,0x6E,0x67,0x00                ; asm/msg/eng/SkSysName.asm line 145
+0049BD5A @carvingsysname:                                             ; asm/msg/eng/SkSysName.asm line 146
+0049BD5A .byte 0x43,0x61,0x72,0x76,0x69,0x6E,0x67,0x00                ; asm/msg/eng/SkSysName.asm line 147
+0049BD62 @terrainsysname:                                             ; asm/msg/eng/SkSysName.asm line 148
+0049BD62 .byte 0x54,0x65,0x72,0x72,0x61,0x69,0x6E,0x00                ; asm/msg/eng/SkSysName.asm line 149
+0049BD6A @antisepticsysname:                                          ; asm/msg/eng/SkSysName.asm line 150
+0049BD6A .byte 0x41,0x6E,0x74,0x69,0x73,0x65,0x70,0x74,0x69,0x63,0x00 ; asm/msg/eng/SkSysName.asm line 151
+0049BD75 @snowressysname:                                             ; asm/msg/eng/SkSysName.asm line 152
+0049BD75 .byte 0x53,0x6E,0x6F,0x77,0x20,0x52,0x65,0x73,0x00           ; asm/msg/eng/SkSysName.asm line 153
+0049BD7E @iceressysname:                                              ; asm/msg/eng/SkSysName.asm line 154
+0049BD7E .byte 0x49,0x63,0x65,0x20,0x52,0x65,0x73,0x00                ; asm/msg/eng/SkSysName.asm line 155
+0049BD86 @quakeressysname:                                            ; asm/msg/eng/SkSysName.asm line 156
+0049BD86 .byte 0x51,0x75,0x61,0x6B,0x65,0x20,0x52,0x65,0x73,0x00      ; asm/msg/eng/SkSysName.asm line 157
+0049BD90 @wideareasysname:                                            ; asm/msg/eng/SkSysName.asm line 158
+0049BD90 .byte 0x57,0x69,0x64,0x65,0x20,0x41,0x72,0x65,0x61,0x00      ; asm/msg/eng/SkSysName.asm line 159
+0049BD9A @vocalcordsysname:                                           ; asm/msg/eng/SkSysName.asm line 160
+0049BD9A .byte 0x56,0x6F,0x63,0x61,0x6C,0x20,0x43,0x6F,0x72,0x64,0x00 ; asm/msg/eng/SkSysName.asm line 161
+0049BDA5 @bbqsysname:                                                 ; asm/msg/eng/SkSysName.asm line 162
+0049BDA5 .byte 0x42,0x42,0x51,0x00                                    ; asm/msg/eng/SkSysName.asm line 163
+0049BDA9 @gunnery:                                                    ; asm/msg/eng/SkSysName.asm line 164
+0049BDA9 .byte 0x47,0x75,0x6E,0x6E,0x65,0x72,0x79,0x00                ; asm/msg/eng/SkSysName.asm line 165
+0049BDB1 .org 0x00447470                                              ; asm/msg/eng/SkSysName.asm line 167
+00447470 .word 0x0049BAD8                                             ; asm/msg/eng/SkSysName.asm line 168
+00447474 .word 0x0049BADD                                             ; asm/msg/eng/SkSysName.asm line 169
+00447478 .word 0x0049BAE5                                             ; asm/msg/eng/SkSysName.asm line 170
+0044747C .word 0x0049BAEA                                             ; asm/msg/eng/SkSysName.asm line 171
+00447480 .word 0x0049BAF5                                             ; asm/msg/eng/SkSysName.asm line 172
+00447484 .word 0x0049BB00                                             ; asm/msg/eng/SkSysName.asm line 173
+00447488 .word 0x0049BB06                                             ; asm/msg/eng/SkSysName.asm line 174
+0044748C .word 0x0049BB0F                                             ; asm/msg/eng/SkSysName.asm line 175
+00447490 .word 0x0049BB19                                             ; asm/msg/eng/SkSysName.asm line 176
+00447494 .word 0x0049BB24                                             ; asm/msg/eng/SkSysName.asm line 177
+00447498 .word 0x0049BB2F                                             ; asm/msg/eng/SkSysName.asm line 178
+0044749C .word 0x0049BB3A                                             ; asm/msg/eng/SkSysName.asm line 179
+004474A0 .word 0x0049BB45                                             ; asm/msg/eng/SkSysName.asm line 180
+004474A4 .word 0x0049BB50                                             ; asm/msg/eng/SkSysName.asm line 181
+004474A8 .word 0x0049BB58                                             ; asm/msg/eng/SkSysName.asm line 182
+004474AC .word 0x0049BB5D                                             ; asm/msg/eng/SkSysName.asm line 183
+004474B0 .word 0x0049BB67                                             ; asm/msg/eng/SkSysName.asm line 184
+004474B4 .word 0x0049BB70                                             ; asm/msg/eng/SkSysName.asm line 185
+004474B8 .word 0x0049BB76                                             ; asm/msg/eng/SkSysName.asm line 186
+004474BC .word 0x0049BB7D                                             ; asm/msg/eng/SkSysName.asm line 187
+004474C0 .word 0x0049BB88                                             ; asm/msg/eng/SkSysName.asm line 188
+004474C4 .word 0x0049BB93                                             ; asm/msg/eng/SkSysName.asm line 189
+004474C8 .word 0x0049BB9A                                             ; asm/msg/eng/SkSysName.asm line 190
+004474CC .word 0x0049BBA4                                             ; asm/msg/eng/SkSysName.asm line 191
+004474D0 .word 0x0049BBAF                                             ; asm/msg/eng/SkSysName.asm line 192
+004474D4 .word 0x0049BBBA                                             ; asm/msg/eng/SkSysName.asm line 193
+004474D8 .word 0x0049BBC0                                             ; asm/msg/eng/SkSysName.asm line 194
+004474DC .word 0x0049BBC8                                             ; asm/msg/eng/SkSysName.asm line 195
+004474E0 .word 0x0049BBD3                                             ; asm/msg/eng/SkSysName.asm line 196
+004474E4 .word 0x0049BBDA                                             ; asm/msg/eng/SkSysName.asm line 197
+004474E8 .word 0x0049BBE3                                             ; asm/msg/eng/SkSysName.asm line 198
+004474EC .word 0x0049BBEC                                             ; asm/msg/eng/SkSysName.asm line 199
+004474F0 .word 0x0049BBF3                                             ; asm/msg/eng/SkSysName.asm line 200
+004474F4 .word 0x0049BBFB                                             ; asm/msg/eng/SkSysName.asm line 201
+004474F8 .word 0x0049BC05                                             ; asm/msg/eng/SkSysName.asm line 202
+004474FC .word 0x0049BC0E                                             ; asm/msg/eng/SkSysName.asm line 203
+00447500 .word 0x0049BC12                                             ; asm/msg/eng/SkSysName.asm line 204
+00447504 .word 0x0049BC1D                                             ; asm/msg/eng/SkSysName.asm line 205
+00447508 .word 0x0049BC28                                             ; asm/msg/eng/SkSysName.asm line 206
+0044750C .word 0x0049BC33                                             ; asm/msg/eng/SkSysName.asm line 207
+00447510 .word 0x0049BC3E                                             ; asm/msg/eng/SkSysName.asm line 208
+00447514 .word 0x0049BC46                                             ; asm/msg/eng/SkSysName.asm line 209
+00447518 .word 0x0049BC4F                                             ; asm/msg/eng/SkSysName.asm line 210
+0044751C .word 0x0049BC58                                             ; asm/msg/eng/SkSysName.asm line 211
+00447520 .word 0x0049BC62                                             ; asm/msg/eng/SkSysName.asm line 212
+00447524 .word 0x0049BC68                                             ; asm/msg/eng/SkSysName.asm line 213
+00447528 .word 0x0049BC73                                             ; asm/msg/eng/SkSysName.asm line 214
+0044752C .word 0x0049BC7A                                             ; asm/msg/eng/SkSysName.asm line 215
+00447530 .word 0x0049BC85                                             ; asm/msg/eng/SkSysName.asm line 216
+00447534 .word 0x0049BC8A                                             ; asm/msg/eng/SkSysName.asm line 217
+00447538 .word 0x0049BC95                                             ; asm/msg/eng/SkSysName.asm line 218
+0044753C .word 0x0049BC9F                                             ; asm/msg/eng/SkSysName.asm line 219
+00447540 .word 0x0049BCA6                                             ; asm/msg/eng/SkSysName.asm line 220
+00447544 .word 0x0049BCAD                                             ; asm/msg/eng/SkSysName.asm line 221
+00447548 .word 0x0049BCB6                                             ; asm/msg/eng/SkSysName.asm line 222
+0044754C .word 0x0049BCC0                                             ; asm/msg/eng/SkSysName.asm line 223
+00447550 .word 0x0049BCC5                                             ; asm/msg/eng/SkSysName.asm line 224
+00447554 .word 0x0049BCCD                                             ; asm/msg/eng/SkSysName.asm line 225
+00447558 .word 0x0049BCD7                                             ; asm/msg/eng/SkSysName.asm line 226
+0044755C .word 0x0049BCE1                                             ; asm/msg/eng/SkSysName.asm line 227
+00447560 .word 0x0049BCEC                                             ; asm/msg/eng/SkSysName.asm line 228
+00447564 .word 0x0049BCF7                                             ; asm/msg/eng/SkSysName.asm line 229
+00447568 .word 0x0049BCFF                                             ; asm/msg/eng/SkSysName.asm line 230
+0044756C .word 0x0049BD09                                             ; asm/msg/eng/SkSysName.asm line 231
+00447570 .word 0x0049BD14                                             ; asm/msg/eng/SkSysName.asm line 232
+00447574 .word 0x0049BD1A                                             ; asm/msg/eng/SkSysName.asm line 233
+00447578 .word 0x0049BD24                                             ; asm/msg/eng/SkSysName.asm line 234
+0044757C .word 0x0049BD2F                                             ; asm/msg/eng/SkSysName.asm line 235
+00447580 .word 0x0049BD37                                             ; asm/msg/eng/SkSysName.asm line 236
+00447584 .word 0x0049BD40                                             ; asm/msg/eng/SkSysName.asm line 237
+00447588 .word 0x0049BD4A                                             ; asm/msg/eng/SkSysName.asm line 238
+0044758C .word 0x0049BD52                                             ; asm/msg/eng/SkSysName.asm line 239
+00447590 .word 0x0049BD5A                                             ; asm/msg/eng/SkSysName.asm line 240
+00447594 .word 0x0049BD62                                             ; asm/msg/eng/SkSysName.asm line 241
+00447598 .word 0x0049BD6A                                             ; asm/msg/eng/SkSysName.asm line 242
+0044759C .word 0x0049BD75                                             ; asm/msg/eng/SkSysName.asm line 243
+004475A0 .word 0x0049BD7E                                             ; asm/msg/eng/SkSysName.asm line 244
+004475A4 .word 0x0049BD86                                             ; asm/msg/eng/SkSysName.asm line 245
+004475A8 .word 0x0049BD90                                             ; asm/msg/eng/SkSysName.asm line 246
+004475AC .word 0x0049BD9A                                             ; asm/msg/eng/SkSysName.asm line 247
+004475B0 .word 0x0049BDA5                                             ; asm/msg/eng/SkSysName.asm line 248
+004475B4 .word 0x0049BDA9                                             ; asm/msg/eng/SkSysName.asm line 249
+004475B8 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 21
+FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 22
 006AF200 .org 0x00711910                                              ; asm/controls/general.asm line 1
 00711910    lhu     v0,0x370(s3)                                      ; asm/controls/general.asm line 2
 00711914    andi    v0,0x100                                          ; asm/controls/general.asm line 3
@@ -6431,4 +7289,4 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B2614    lq      s0,(sp)                                           ; asm/controls/Gun_Basic_ck.asm line 118
 006B2618    jr      ra                                                ; asm/controls/Gun_Basic_ck.asm line 119
 006B261C    addiu   sp,0x20                                           ; asm/controls/Gun_Basic_ck.asm line 120
-006B2620 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 43
+006B2620 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 45

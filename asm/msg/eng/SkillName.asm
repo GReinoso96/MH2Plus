@@ -137,7 +137,7 @@
     .sjis "Crag S All LV Add"
 .definelabel @ClustSLV1AddSkName,.
     .sjis "Clust S LV1 Add"
-.definelabel @ClustSLV1&2AddSkName,.
+.definelabel @ClustSLV12AddSkName,.
     .sjis "Clust S LV1&2 Add"
 .definelabel @ClustSAllLVAddSkName,.
     .sjis "Clust S All LV Add"
