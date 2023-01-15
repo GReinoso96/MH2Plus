@@ -45,6 +45,8 @@ All translated strings match their Freedom Unite equivalents where possible, thi
 
 ## Building
   The repository contains build tasks for VSCode, otherwise just run Pack.bat for psp controls, packEnglish for psp controls and a provisory low effort english translation or packMV for psp controls and buffed Hunting Horn.
+  
+  When fan servers go public, DO NOT go online with the MV mod.
 
 ## Distributing your modifications
   Using an XDelta tool, you can generate xdelta patches by providing an original iso and your modified copy, by making an xdelta patch you can share your modifications without sharing actual game files, as that would be illegal.
