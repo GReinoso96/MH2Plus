@@ -1,6 +1,11 @@
 # MH2Plus
 MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM_662.80.
 
+# English Translation
+This patch has an optional PROVISORY English translation featuring Weapon, Item and Skill names, nothing else will be touched, there are other people working on a proper translation and this patch will be updated with the necessary changes by then.
+
+All translated strings match their Freedom Unite equivalents where possible, things that are exclusive to Dos have been translated to match the style.
+
 # Usage
 ## Download
   Head over to the releases tab on the right and apply the downloaded file to a clean MH2 iso using xdelta.
