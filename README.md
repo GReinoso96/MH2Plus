@@ -8,7 +8,8 @@ All translated strings match their Freedom Unite equivalents where possible, thi
 
 # Usage
 ## Download
-  Head over to the releases tab on the right and apply the downloaded file to a clean MH2 iso using xdelta.
+  Go to https://github.com/GReinoso96/MH2Plus/releases/tag/Release
+  Download the patch you want and apply with an xdelta patcher.
 
 ## Set-Up
   First, you must supply the following:
