@@ -1,0 +1,31 @@
+; General
+.definelabel Pl_atk_set,0x003ab9d0
+.definelabel Pl_master_ck,0x003acda0
+.definelabel Pl_act_set2,0x003abbf0
+.definelabel DB_atk_set,0x006b80b0
+.definelabel Online_ck,0x0036ba40
+.definelabel Game_clear_ck,0x0036bb10
+.definelabel Guard_attack_ck,0x0070f510
+; SnS Attacks
+.definelabel SnS_Basic_Ck,0x006b6570
+.definelabel SnS_ex_atk,0x006b6690
+.definelabel SnS_Guard_Attack,0x006b67c0
+; GS Attacks
+.definelabel GS_Basic_ck,0x006b1520
+.definelabel GetAttackBtn,0x006b14a0
+; Hammer
+.definelabel Hammer_Basic_ck,0x006b4050
+; Lance
+.definelabel Lance_Basic_ck,0x006b5490
+; LS
+.definelabel LS_Basic_ck,0x006ba920
+.definelabel LSGetAttackBtn,0x006baa80
+.definelabel LSGetSpirit,0x003b5b60
+; GL
+.definelabel GL_Basic_ck,0x006c0390
+; HH
+.definelabel HH_Basic_ck,0x006bcdf0
+; DB
+.definelabel DB_Basic_ck,0x006b81f0
+; Bowgun
+.definelabel Gun_Basic_ck,0x006b2480
