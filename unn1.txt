@@ -2,7 +2,7 @@ sub_main.ovl
 unn1\select.ovl
 game.ovl
 unn1\lobby.ovl
-nethttp.ovl
+unn1\nethttp.ovl
 unn1\gm_sub.ovl
 unn1\dnas_net.ovl
 unn1\dnas_ins.ovl

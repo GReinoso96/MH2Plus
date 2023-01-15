@@ -4,9 +4,8 @@
 .open "ogSLPM_662.80","SLPM_662.80",0x00100000
     .include "asm/ElfFuncs.asm"
 .close
-.open "unn1/nethttp.ovl","nethttp.ovl",0x008FAE00
-    .include "asm/dnas.asm"
-.close
+;.open "unn1/nethttp.ovl","nethttp.ovl",0x008FAE00
+;.close
 .open "unn1/sub_main.ovl","sub_main.ovl",0x002E3900
     .include "asm/ChatQuest.asm"
     .include "asm/controls/camera.asm"
@@ -14,6 +13,8 @@
         .include "asm/msg/eng/WeaponMeleeName.asm"
         .include "asm/msg/eng/WeaponGunnerName.asm"
         .include "asm/msg/eng/ItemName.asm"
+        .include "asm/msg/eng/SkillName.asm"
+        .include "asm/msg/eng/SkSysName.asm"
     .endif
     ;.include "asm/MakeSpace.asm"
     ;.include "asm/CustomFuncs.asm"
