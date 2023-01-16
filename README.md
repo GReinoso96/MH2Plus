@@ -1,9 +1,15 @@
 # MH2Plus
 MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM_662.80.
 
+# English Translation
+This patch has an optional PROVISORY English translation featuring Weapon, Item and Skill names, nothing else will be touched, there are other people working on a proper translation and this patch will be updated with the necessary changes by then.
+
+All translated strings match their Freedom Unite equivalents where possible, things that are exclusive to Dos have been translated to match the style.
+
 # Usage
 ## Download
-  Head over to the releases tab on the right and apply the downloaded file to a clean MH2 iso using xdelta.
+  Go to https://github.com/GReinoso96/MH2Plus/releases/tag/Release
+  Download the patch you want and apply with an xdelta patcher.
 
 ## Set-Up
   First, you must supply the following:
@@ -40,6 +46,8 @@ MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM
 
 ## Building
   The repository contains build tasks for VSCode, otherwise just run Pack.bat for psp controls, packEnglish for psp controls and a provisory low effort english translation or packMV for psp controls and buffed Hunting Horn.
+  
+  When fan servers go public, DO NOT go online with the MV mod.
 
 ## Distributing your modifications
   Using an XDelta tool, you can generate xdelta patches by providing an original iso and your modified copy, by making an xdelta patch you can share your modifications without sharing actual game files, as that would be illegal.
@@ -100,8 +108,6 @@ MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM
 
 # To-Do
   * Clean up code, many things are messy.
-  * Fix a few problems with Lance input, weapon is fully usable but charge moves need a good scrubbing.
-  * Implement hold to carve/gather when crouching (Easy peasy).
 
 ## Other planned features
   These will all be part of an optional rebalance patch.
