@@ -1,5 +1,5 @@
 .org 0x006B09F8 ; GS Charge Held
-    lhu         v0, InputFaceHeld
+    lhu         v0, InputFaceHeld(s1)
     andi        v0, BtnTriangle
 
 .org 0x006b0580 ; GS Bounce
