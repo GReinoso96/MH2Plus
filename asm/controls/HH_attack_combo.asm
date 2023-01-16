@@ -162,9 +162,11 @@
     addiu       sp, 0x30
 
 .org 0x006bd2b8 ; Play ex at
-    jal         GetAttackBtn
+    jal         GetAttackBtnHH
     dmove       a0, s1
     li          a3, 0x4
+    beq         v0, a3, @@DoLeft ; Left
+    nop
     li          v1, 0x3
     beq         v0, v1, @@DoUpward ; Down
     nop
@@ -218,6 +220,29 @@
     nop
 @@Back0:
     li          a2, 0x1C
+    jal         Pl_act_set2
+    li          a1, 0x1
+    b           0x006bd4f8 ; return
+    nop
+@@DoLeft:
+    li          v0, 0x3
+    beq         s0, v0, @@Left3
+    nop
+    beq         s0, zero, @@Left0
+    nop
+    li          a2, 0x11
+    jal         Pl_act_set2
+    li          a1, 0x1
+    b           0x006bd4f8 ; return
+    nop
+@@Left3:
+    li          a2, 0x21
+    jal         Pl_act_set2
+    li          a1, 0x1
+    b           0x006bd4f8 ; return
+    nop
+@@Left0:
+    li          a2, 0x1D
     jal         Pl_act_set2
     li          a1, 0x1
     b           0x006bd4f8 ; return

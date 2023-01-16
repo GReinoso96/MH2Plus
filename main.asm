@@ -15,6 +15,11 @@
         .include "asm/msg/eng/ItemName.asm"
         .include "asm/msg/eng/SkillName.asm"
         .include "asm/msg/eng/SkSysName.asm"
+        .include "asm/msg/eng/HelmName.asm"
+        .include "asm/msg/eng/BodyName.asm"
+        .include "asm/msg/eng/ArmName.asm"
+        .include "asm/msg/eng/LegName.asm"
+        .include "asm/msg/eng/WaistName.asm"
     .endif
     ;.include "asm/MakeSpace.asm"
     ;.include "asm/CustomFuncs.asm"

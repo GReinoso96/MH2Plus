@@ -62,20 +62,27 @@
 
 .org 0x006b75ac ; From Demon Initiation
     lhu         v1, InputFace(s1)
-    andi        v1, BtnTriangleCircle
+    andi        v1, BtnTriangle
 
-.org 0x006b7854 ; From Demon Spin
-    lhu         v0, InputFace(s1)
-    andi        at, v0, BtnTriangleCircle
-    beqz        at, 0x006b78d8 ; Normalize
+.org 0x006b7854 ; From Demon Spin Rewrite
+    lhu         v1, InputFace(s1)
+    andi        v1, BtnTriangleCircle
+    beqz        v1, 0x006b78d8 ; Check Roll
     nop
-    andi        at, v0, BtnTriangle
-    beqz        at, 0x006b7884 ; Check Roll
+    lhu         v1, InputFace(s1)
+    andi        at, v1, BtnTriangle
+    beqz        at, @@DoSpin
+    li          a1, 0x1
+    sb          a1, 0x6(s1)
+    lhu         a0, 0x380(s1)
+    andi        v1, a0, 0x800
+    beqz        v1, 0x006b78a8 ; Check Right
     nop
-    andi        at, v0, BtnCircle
-    beqz        at, 0x006b7884 ; Check Roll
-    li          v1, 0x6
     b           0x006b7884 ; Check Roll
+    sw          a1, 0x8(s1)
+@@DoSpin:
+    li          v1, 0x6
+    b           0x006b78d8 ; Normalize
     sb          v1, 0x6(s1)
 
 .org 0x006b7ed0 ; Bounce

@@ -93,10 +93,13 @@
     li          v0, 0x1
 @@DoReload:
     lbu         v1, 0x1C(a0)
-    bnez        v1, @@None
+    lbu         v0, 0x1D(a0)
+    beq         v1, v0, @@None
+    nop
     lh          v0, 0x814(a0)
     blez        v0, @@None
     li          a2, 0x1
+    li          a3, 0x5
     jal         Pl_atk_set
     li          a1, 0x1
     b           @@Return
