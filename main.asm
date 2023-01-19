@@ -45,6 +45,7 @@
     .include "asm/controls/Bow_Basic_ck.asm"
     .include "asm/controls/Bow_attack_combo.asm"
     .include "asm/controls/Gun_Basic_ck.asm"
+    .include "asm/controls/Gun_attack_combo.asm"
     .include "asm/plMV.asm"
     ;.include "asm/controls/Guard_attack_ck.asm"
 .close

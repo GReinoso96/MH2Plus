@@ -1,3 +1,14 @@
+.org 0x006b1a28 ; GS Unsheathe Attack
+    lhu         v0, InputFace(a0)
+    andi        v0, BtnTriangle
+    beqz        v0, 0x006b1a60
+    li          a1, 0x1
+    li          a2, 0x14
+    jal         Pl_atk_set
+    li          a3, 0x4
+    b           0x006b1a60
+    nop
+
 .org 0x006B09F8 ; GS Charge Held
     lhu         v0, InputFaceHeld(s1)
     andi        v0, BtnTriangle

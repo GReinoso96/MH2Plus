@@ -1,6 +1,6 @@
-﻿; 37 files included
-; 11518 lines
-; 3638 labels
+﻿; 38 files included
+; 11582 lines
+; 3655 labels
 ; 19 equations
 
 ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm
@@ -39,6 +39,7 @@
 ; asm/controls/Bow_Basic_ck.asm
 ; asm/controls/Bow_attack_combo.asm
 ; asm/controls/Gun_Basic_ck.asm
+; asm/controls/Gun_attack_combo.asm
 ; asm/plMV.asm
 
 FFFFFFFF .ps2                                                         ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 1
@@ -262,7 +263,43 @@ FFFFFFFF .open "ogSLPM_662.80","SLPM_662.80",0x00100000               ; D:\pcsx2
 0019A274    jr      ra                                                ; asm/ElfFuncs.asm line 215
 0019A278    nop                                                       ; asm/ElfFuncs.asm line 216
 0019A27C .align 0x00000008                                            ; asm/ElfFuncs.asm line 217
-0019A280 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 6
+0019A000 gununsheatheck:                                              ; asm/ElfFuncs.asm line 218
+0019A280    lhu     v0,0x370(a0)                                      ; asm/ElfFuncs.asm line 219
+0019A284    andi    at,v0,0x100                                       ; asm/ElfFuncs.asm line 220
+0019A288    beqz    at,0x19A2B0                                       ; asm/ElfFuncs.asm line 221
+0019A28C    nop                                                       ; asm/ElfFuncs.asm line 222
+0019A290    andi    at,v0,0x20                                        ; asm/ElfFuncs.asm line 223
+0019A294    beqz    at,0x19A2B0                                       ; asm/ElfFuncs.asm line 224
+0019A298    nop                                                       ; asm/ElfFuncs.asm line 225
+0019A29C    andi    at,v0,0x80                                        ; asm/ElfFuncs.asm line 226
+0019A2A0    beqz    at,0x19A2B0                                       ; asm/ElfFuncs.asm line 227
+0019A2A4    nop                                                       ; asm/ElfFuncs.asm line 228
+0019A2A8    b       0x19A2B4                                          ; asm/ElfFuncs.asm line 229
+0019A2AC    ori     v0,r0,0x1                                         ; asm/ElfFuncs.asm line 230
+0019A2B0 @@nope:                                                      ; asm/ElfFuncs.asm line 231
+0019A2B0    ori     v0,r0,0x0                                         ; asm/ElfFuncs.asm line 232
+0019A2B4 @@end:                                                       ; asm/ElfFuncs.asm line 233
+0019A2B4    jr      ra                                                ; asm/ElfFuncs.asm line 234
+0019A2B8    nop                                                       ; asm/ElfFuncs.asm line 235
+0019A2BC .align 0x00000008                                            ; asm/ElfFuncs.asm line 236
+0019A040 glexck:                                                      ; asm/ElfFuncs.asm line 237
+0019A2C0    andi    at,v0,0x100                                       ; asm/ElfFuncs.asm line 238
+0019A2C4    beqz    at,0x19A2E8                                       ; asm/ElfFuncs.asm line 239
+0019A2C8    nop                                                       ; asm/ElfFuncs.asm line 240
+0019A2CC    andi    at,v0,0x20                                        ; asm/ElfFuncs.asm line 241
+0019A2D0    beqz    at,0x19A2E0                                       ; asm/ElfFuncs.asm line 242
+0019A2D4    nop                                                       ; asm/ElfFuncs.asm line 243
+0019A2D8    b       0x19A2EC                                          ; asm/ElfFuncs.asm line 244
+0019A2DC    ori     v0,r0,0x1                                         ; asm/ElfFuncs.asm line 245
+0019A2E0 @@onlytriangle:                                              ; asm/ElfFuncs.asm line 246
+0019A2E0    ori     v0,r0,0x2                                         ; asm/ElfFuncs.asm line 247
+0019A2E4    b       0x19A2EC                                          ; asm/ElfFuncs.asm line 248
+0019A2E8 @@nothing:                                                   ; asm/ElfFuncs.asm line 249
+0019A2E8    ori     v0,r0,0x0                                         ; asm/ElfFuncs.asm line 250
+0019A2EC @@return:                                                    ; asm/ElfFuncs.asm line 251
+0019A2EC    jr      ra                                                ; asm/ElfFuncs.asm line 252
+0019A2F0    nop                                                       ; asm/ElfFuncs.asm line 253
+0019A2F4 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 6
 FFFFFFFF .open "unn1/sub_main.ovl","sub_main.ovl",0x002E3900          ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 9
 0035A040 @chatstartmode:                                              ; asm/ChatQuest.asm line 1
 0033EBFC @chatstartbuttonquest:                                       ; asm/ChatQuest.asm line 2
@@ -9666,148 +9703,158 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B15DC    ld      ra,(sp)                                           ; asm/controls/GS_Basic_ck.asm line 56
 006B15E0    jr      ra                                                ; asm/controls/GS_Basic_ck.asm line 57
 006B15E4    addiu   sp,0x10                                           ; asm/controls/GS_Basic_ck.asm line 58
-006B15E8 .org 0x006B09F8                                              ; asm/controls/GS_attack_combo.asm line 1
-006B09F8    lhu     v0,0x374(s1)                                      ; asm/controls/GS_attack_combo.asm line 2
-006B09FC    andi    v0,0x100                                          ; asm/controls/GS_attack_combo.asm line 3
-006B0A00 .org 0x006B0580                                              ; asm/controls/GS_attack_combo.asm line 5
-006B0580    lhu     v1,0x370(s0)                                      ; asm/controls/GS_attack_combo.asm line 6
-006B0584    andi    v1,0x120                                          ; asm/controls/GS_attack_combo.asm line 7
-006B0588 .org 0x006B1748                                              ; asm/controls/GS_attack_combo.asm line 9
-006B1748    jal     0x6B14A0                                          ; asm/controls/GS_attack_combo.asm line 10
-006B174C    dmove   a0,s1                                             ; asm/controls/GS_attack_combo.asm line 11
-006B1750    beqz    v0,0x6B1910                                       ; asm/controls/GS_attack_combo.asm line 12
-006B1754    nop                                                       ; asm/controls/GS_attack_combo.asm line 13
-006B1758    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 14
-006B175C    beq     v0,v1,0x6B1784                                    ; asm/controls/GS_attack_combo.asm line 15
-006B1760    nop                                                       ; asm/controls/GS_attack_combo.asm line 16
-006B1764    ori     v1,r0,0x3                                         ; asm/controls/GS_attack_combo.asm line 17
-006B1768    beq     v0,v1,0x6B1808                                    ; asm/controls/GS_attack_combo.asm line 18
-006B176C    nop                                                       ; asm/controls/GS_attack_combo.asm line 19
-006B1770    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 20
-006B1774    beq     v0,v1,0x6B188C                                    ; asm/controls/GS_attack_combo.asm line 21
-006B1778    nop                                                       ; asm/controls/GS_attack_combo.asm line 22
-006B177C    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 23
-006B1780    nop                                                       ; asm/controls/GS_attack_combo.asm line 24
-006B1784 @@chargecombos:                                              ; asm/controls/GS_attack_combo.asm line 25
-006B1784    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 26
-006B1788    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 27
-006B178C    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 28
-006B1790    beq     s0,v1,0x6B17A8                                    ; asm/controls/GS_attack_combo.asm line 29
-006B1794    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 30
-006B1798    beq     s0,a1,0x6B17D8                                    ; asm/controls/GS_attack_combo.asm line 31
-006B179C    nop                                                       ; asm/controls/GS_attack_combo.asm line 32
-006B17A0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 33
-006B17A4    nop                                                       ; asm/controls/GS_attack_combo.asm line 34
-006B17A8 @@chcheckright:                                              ; asm/controls/GS_attack_combo.asm line 35
-006B17A8    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 36
-006B17AC    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 37
-006B17B0    beqz    v0,0x6B17C8                                       ; asm/controls/GS_attack_combo.asm line 38
-006B17B4    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 39
-006B17B8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 40
-006B17BC    ori     a2,r0,0x19                                        ; asm/controls/GS_attack_combo.asm line 41
-006B17C0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 42
-006B17C4    nop                                                       ; asm/controls/GS_attack_combo.asm line 43
-006B17C8 @@chnotright:                                                ; asm/controls/GS_attack_combo.asm line 44
-006B17C8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 45
-006B17CC    ori     a2,r0,0x15                                        ; asm/controls/GS_attack_combo.asm line 46
-006B17D0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 47
-006B17D4    nop                                                       ; asm/controls/GS_attack_combo.asm line 48
-006B17D8 @@chcheckleft:                                               ; asm/controls/GS_attack_combo.asm line 49
-006B17D8    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 50
-006B17DC    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 51
-006B17E0    beqz    v0,0x6B17F8                                       ; asm/controls/GS_attack_combo.asm line 52
-006B17E4    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 53
-006B17E8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 54
-006B17EC    ori     a2,r0,0x18                                        ; asm/controls/GS_attack_combo.asm line 55
-006B17F0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 56
-006B17F4    nop                                                       ; asm/controls/GS_attack_combo.asm line 57
-006B17F8 @@chnotleft:                                                 ; asm/controls/GS_attack_combo.asm line 58
-006B17F8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 59
-006B17FC    ori     a2,r0,0x16                                        ; asm/controls/GS_attack_combo.asm line 60
-006B1800    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 61
-006B1804    nop                                                       ; asm/controls/GS_attack_combo.asm line 62
-006B1808 @@backwardcombos:                                            ; asm/controls/GS_attack_combo.asm line 63
-006B1808    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 64
-006B180C    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 65
-006B1810    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 66
-006B1814    beq     s0,v1,0x6B182C                                    ; asm/controls/GS_attack_combo.asm line 67
-006B1818    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 68
-006B181C    beq     s0,a1,0x6B185C                                    ; asm/controls/GS_attack_combo.asm line 69
-006B1820    nop                                                       ; asm/controls/GS_attack_combo.asm line 70
-006B1824    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 71
-006B1828    nop                                                       ; asm/controls/GS_attack_combo.asm line 72
-006B182C @@bwcheckcharged:                                            ; asm/controls/GS_attack_combo.asm line 73
-006B182C    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 74
-006B1830    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 75
-006B1834    beqz    v0,0x6B184C                                       ; asm/controls/GS_attack_combo.asm line 76
-006B1838    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 77
-006B183C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 78
-006B1840    ori     a2,r0,0xB                                         ; asm/controls/GS_attack_combo.asm line 79
-006B1844    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 80
-006B1848    nop                                                       ; asm/controls/GS_attack_combo.asm line 81
-006B184C @@bwnotright:                                                ; asm/controls/GS_attack_combo.asm line 82
-006B184C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 83
-006B1850    ori     a2,r0,0x9                                         ; asm/controls/GS_attack_combo.asm line 84
-006B1854    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 85
-006B1858    nop                                                       ; asm/controls/GS_attack_combo.asm line 86
-006B185C @@bwcheckside:                                               ; asm/controls/GS_attack_combo.asm line 87
-006B185C    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 88
-006B1860    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 89
-006B1864    beqz    v0,0x6B187C                                       ; asm/controls/GS_attack_combo.asm line 90
-006B1868    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 91
-006B186C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 92
-006B1870    ori     a2,r0,0xC                                         ; asm/controls/GS_attack_combo.asm line 93
-006B1874    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 94
-006B1878    nop                                                       ; asm/controls/GS_attack_combo.asm line 95
-006B187C @@bwnotsideright:                                            ; asm/controls/GS_attack_combo.asm line 96
-006B187C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 97
-006B1880    ori     a2,r0,0xA                                         ; asm/controls/GS_attack_combo.asm line 98
-006B1884    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 99
-006B1888    nop                                                       ; asm/controls/GS_attack_combo.asm line 100
-006B188C @@sideslashcombos:                                           ; asm/controls/GS_attack_combo.asm line 101
-006B188C    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 102
-006B1890    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 103
-006B1894    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 104
-006B1898    beq     s0,v1,0x6B18B0                                    ; asm/controls/GS_attack_combo.asm line 105
-006B189C    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 106
-006B18A0    beq     s0,a1,0x6B18E0                                    ; asm/controls/GS_attack_combo.asm line 107
-006B18A4    nop                                                       ; asm/controls/GS_attack_combo.asm line 108
-006B18A8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 109
-006B18AC    nop                                                       ; asm/controls/GS_attack_combo.asm line 110
-006B18B0 @@slcheckcharged:                                            ; asm/controls/GS_attack_combo.asm line 111
-006B18B0    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 112
-006B18B4    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 113
-006B18B8    beqz    v0,0x6B18D0                                       ; asm/controls/GS_attack_combo.asm line 114
-006B18BC    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 115
-006B18C0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 116
-006B18C4    ori     a2,r0,0x7                                         ; asm/controls/GS_attack_combo.asm line 117
-006B18C8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 118
-006B18CC    nop                                                       ; asm/controls/GS_attack_combo.asm line 119
-006B18D0 @@slnotchargedleft:                                          ; asm/controls/GS_attack_combo.asm line 120
-006B18D0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 121
-006B18D4    ori     a2,r0,0x5                                         ; asm/controls/GS_attack_combo.asm line 122
-006B18D8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 123
-006B18DC    nop                                                       ; asm/controls/GS_attack_combo.asm line 124
-006B18E0 @@slcheckback:                                               ; asm/controls/GS_attack_combo.asm line 125
-006B18E0    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 126
-006B18E4    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 127
-006B18E8    beqz    v0,0x6B1900                                       ; asm/controls/GS_attack_combo.asm line 128
-006B18EC    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 129
-006B18F0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 130
-006B18F4    ori     a2,r0,0x8                                         ; asm/controls/GS_attack_combo.asm line 131
-006B18F8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 132
-006B18FC    nop                                                       ; asm/controls/GS_attack_combo.asm line 133
-006B1900 @@slnotbackleft:                                             ; asm/controls/GS_attack_combo.asm line 134
-006B1900    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 135
-006B1904    ori     a2,r0,0x6                                         ; asm/controls/GS_attack_combo.asm line 136
-006B1908    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 137
-006B190C    nop                                                       ; asm/controls/GS_attack_combo.asm line 138
-006B1910 @@end:                                                       ; asm/controls/GS_attack_combo.asm line 139
-006B1910    ld      ra,0x20(sp)                                       ; asm/controls/GS_attack_combo.asm line 140
-006B1914    lq      s1,0x10(sp)                                       ; asm/controls/GS_attack_combo.asm line 141
-006B1918    lq      s0,(sp)                                           ; asm/controls/GS_attack_combo.asm line 142
-006B191C    jr      ra                                                ; asm/controls/GS_attack_combo.asm line 143
-006B1920    addiu   sp,0x30                                           ; asm/controls/GS_attack_combo.asm line 144
+006B15E8 .org 0x006B1A28                                              ; asm/controls/GS_attack_combo.asm line 1
+006B1A28    lhu     v0,0x370(a0)                                      ; asm/controls/GS_attack_combo.asm line 2
+006B1A2C    andi    v0,0x100                                          ; asm/controls/GS_attack_combo.asm line 3
+006B1A30    beqz    v0,0x6B1A60                                       ; asm/controls/GS_attack_combo.asm line 4
+006B1A34    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 5
+006B1A38    ori     a2,r0,0x14                                        ; asm/controls/GS_attack_combo.asm line 6
+006B1A3C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 7
+006B1A40    ori     a3,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 8
+006B1A44    b       0x6B1A60                                          ; asm/controls/GS_attack_combo.asm line 9
+006B1A48    nop                                                       ; asm/controls/GS_attack_combo.asm line 10
+006B1A4C .org 0x006B09F8                                              ; asm/controls/GS_attack_combo.asm line 12
+006B09F8    lhu     v0,0x374(s1)                                      ; asm/controls/GS_attack_combo.asm line 13
+006B09FC    andi    v0,0x100                                          ; asm/controls/GS_attack_combo.asm line 14
+006B0A00 .org 0x006B0580                                              ; asm/controls/GS_attack_combo.asm line 16
+006B0580    lhu     v1,0x370(s0)                                      ; asm/controls/GS_attack_combo.asm line 17
+006B0584    andi    v1,0x120                                          ; asm/controls/GS_attack_combo.asm line 18
+006B0588 .org 0x006B1748                                              ; asm/controls/GS_attack_combo.asm line 20
+006B1748    jal     0x6B14A0                                          ; asm/controls/GS_attack_combo.asm line 21
+006B174C    dmove   a0,s1                                             ; asm/controls/GS_attack_combo.asm line 22
+006B1750    beqz    v0,0x6B1910                                       ; asm/controls/GS_attack_combo.asm line 23
+006B1754    nop                                                       ; asm/controls/GS_attack_combo.asm line 24
+006B1758    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 25
+006B175C    beq     v0,v1,0x6B1784                                    ; asm/controls/GS_attack_combo.asm line 26
+006B1760    nop                                                       ; asm/controls/GS_attack_combo.asm line 27
+006B1764    ori     v1,r0,0x3                                         ; asm/controls/GS_attack_combo.asm line 28
+006B1768    beq     v0,v1,0x6B1808                                    ; asm/controls/GS_attack_combo.asm line 29
+006B176C    nop                                                       ; asm/controls/GS_attack_combo.asm line 30
+006B1770    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 31
+006B1774    beq     v0,v1,0x6B188C                                    ; asm/controls/GS_attack_combo.asm line 32
+006B1778    nop                                                       ; asm/controls/GS_attack_combo.asm line 33
+006B177C    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 34
+006B1780    nop                                                       ; asm/controls/GS_attack_combo.asm line 35
+006B1784 @@chargecombos:                                              ; asm/controls/GS_attack_combo.asm line 36
+006B1784    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 37
+006B1788    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 38
+006B178C    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 39
+006B1790    beq     s0,v1,0x6B17A8                                    ; asm/controls/GS_attack_combo.asm line 40
+006B1794    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 41
+006B1798    beq     s0,a1,0x6B17D8                                    ; asm/controls/GS_attack_combo.asm line 42
+006B179C    nop                                                       ; asm/controls/GS_attack_combo.asm line 43
+006B17A0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 44
+006B17A4    nop                                                       ; asm/controls/GS_attack_combo.asm line 45
+006B17A8 @@chcheckright:                                              ; asm/controls/GS_attack_combo.asm line 46
+006B17A8    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 47
+006B17AC    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 48
+006B17B0    beqz    v0,0x6B17C8                                       ; asm/controls/GS_attack_combo.asm line 49
+006B17B4    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 50
+006B17B8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 51
+006B17BC    ori     a2,r0,0x19                                        ; asm/controls/GS_attack_combo.asm line 52
+006B17C0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 53
+006B17C4    nop                                                       ; asm/controls/GS_attack_combo.asm line 54
+006B17C8 @@chnotright:                                                ; asm/controls/GS_attack_combo.asm line 55
+006B17C8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 56
+006B17CC    ori     a2,r0,0x15                                        ; asm/controls/GS_attack_combo.asm line 57
+006B17D0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 58
+006B17D4    nop                                                       ; asm/controls/GS_attack_combo.asm line 59
+006B17D8 @@chcheckleft:                                               ; asm/controls/GS_attack_combo.asm line 60
+006B17D8    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 61
+006B17DC    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 62
+006B17E0    beqz    v0,0x6B17F8                                       ; asm/controls/GS_attack_combo.asm line 63
+006B17E4    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 64
+006B17E8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 65
+006B17EC    ori     a2,r0,0x18                                        ; asm/controls/GS_attack_combo.asm line 66
+006B17F0    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 67
+006B17F4    nop                                                       ; asm/controls/GS_attack_combo.asm line 68
+006B17F8 @@chnotleft:                                                 ; asm/controls/GS_attack_combo.asm line 69
+006B17F8    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 70
+006B17FC    ori     a2,r0,0x16                                        ; asm/controls/GS_attack_combo.asm line 71
+006B1800    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 72
+006B1804    nop                                                       ; asm/controls/GS_attack_combo.asm line 73
+006B1808 @@backwardcombos:                                            ; asm/controls/GS_attack_combo.asm line 74
+006B1808    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 75
+006B180C    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 76
+006B1810    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 77
+006B1814    beq     s0,v1,0x6B182C                                    ; asm/controls/GS_attack_combo.asm line 78
+006B1818    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 79
+006B181C    beq     s0,a1,0x6B185C                                    ; asm/controls/GS_attack_combo.asm line 80
+006B1820    nop                                                       ; asm/controls/GS_attack_combo.asm line 81
+006B1824    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 82
+006B1828    nop                                                       ; asm/controls/GS_attack_combo.asm line 83
+006B182C @@bwcheckcharged:                                            ; asm/controls/GS_attack_combo.asm line 84
+006B182C    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 85
+006B1830    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 86
+006B1834    beqz    v0,0x6B184C                                       ; asm/controls/GS_attack_combo.asm line 87
+006B1838    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 88
+006B183C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 89
+006B1840    ori     a2,r0,0xB                                         ; asm/controls/GS_attack_combo.asm line 90
+006B1844    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 91
+006B1848    nop                                                       ; asm/controls/GS_attack_combo.asm line 92
+006B184C @@bwnotright:                                                ; asm/controls/GS_attack_combo.asm line 93
+006B184C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 94
+006B1850    ori     a2,r0,0x9                                         ; asm/controls/GS_attack_combo.asm line 95
+006B1854    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 96
+006B1858    nop                                                       ; asm/controls/GS_attack_combo.asm line 97
+006B185C @@bwcheckside:                                               ; asm/controls/GS_attack_combo.asm line 98
+006B185C    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 99
+006B1860    andi    v0,0x400                                          ; asm/controls/GS_attack_combo.asm line 100
+006B1864    beqz    v0,0x6B187C                                       ; asm/controls/GS_attack_combo.asm line 101
+006B1868    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 102
+006B186C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 103
+006B1870    ori     a2,r0,0xC                                         ; asm/controls/GS_attack_combo.asm line 104
+006B1874    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 105
+006B1878    nop                                                       ; asm/controls/GS_attack_combo.asm line 106
+006B187C @@bwnotsideright:                                            ; asm/controls/GS_attack_combo.asm line 107
+006B187C    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 108
+006B1880    ori     a2,r0,0xA                                         ; asm/controls/GS_attack_combo.asm line 109
+006B1884    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 110
+006B1888    nop                                                       ; asm/controls/GS_attack_combo.asm line 111
+006B188C @@sideslashcombos:                                           ; asm/controls/GS_attack_combo.asm line 112
+006B188C    ori     v1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 113
+006B1890    beq     s0,v1,0x6B1910                                    ; asm/controls/GS_attack_combo.asm line 114
+006B1894    ori     v1,r0,0x4                                         ; asm/controls/GS_attack_combo.asm line 115
+006B1898    beq     s0,v1,0x6B18B0                                    ; asm/controls/GS_attack_combo.asm line 116
+006B189C    ori     v1,r0,0x2                                         ; asm/controls/GS_attack_combo.asm line 117
+006B18A0    beq     s0,a1,0x6B18E0                                    ; asm/controls/GS_attack_combo.asm line 118
+006B18A4    nop                                                       ; asm/controls/GS_attack_combo.asm line 119
+006B18A8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 120
+006B18AC    nop                                                       ; asm/controls/GS_attack_combo.asm line 121
+006B18B0 @@slcheckcharged:                                            ; asm/controls/GS_attack_combo.asm line 122
+006B18B0    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 123
+006B18B4    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 124
+006B18B8    beqz    v0,0x6B18D0                                       ; asm/controls/GS_attack_combo.asm line 125
+006B18BC    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 126
+006B18C0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 127
+006B18C4    ori     a2,r0,0x7                                         ; asm/controls/GS_attack_combo.asm line 128
+006B18C8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 129
+006B18CC    nop                                                       ; asm/controls/GS_attack_combo.asm line 130
+006B18D0 @@slnotchargedleft:                                          ; asm/controls/GS_attack_combo.asm line 131
+006B18D0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 132
+006B18D4    ori     a2,r0,0x5                                         ; asm/controls/GS_attack_combo.asm line 133
+006B18D8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 134
+006B18DC    nop                                                       ; asm/controls/GS_attack_combo.asm line 135
+006B18E0 @@slcheckback:                                               ; asm/controls/GS_attack_combo.asm line 136
+006B18E0    lhu     v0,0x380(s1)                                      ; asm/controls/GS_attack_combo.asm line 137
+006B18E4    andi    v0,0x800                                          ; asm/controls/GS_attack_combo.asm line 138
+006B18E8    beqz    v0,0x6B1900                                       ; asm/controls/GS_attack_combo.asm line 139
+006B18EC    ori     a1,r0,0x1                                         ; asm/controls/GS_attack_combo.asm line 140
+006B18F0    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 141
+006B18F4    ori     a2,r0,0x8                                         ; asm/controls/GS_attack_combo.asm line 142
+006B18F8    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 143
+006B18FC    nop                                                       ; asm/controls/GS_attack_combo.asm line 144
+006B1900 @@slnotbackleft:                                             ; asm/controls/GS_attack_combo.asm line 145
+006B1900    jal     0x3AB9D0                                          ; asm/controls/GS_attack_combo.asm line 146
+006B1904    ori     a2,r0,0x6                                         ; asm/controls/GS_attack_combo.asm line 147
+006B1908    b       0x6B1910                                          ; asm/controls/GS_attack_combo.asm line 148
+006B190C    nop                                                       ; asm/controls/GS_attack_combo.asm line 149
+006B1910 @@end:                                                       ; asm/controls/GS_attack_combo.asm line 150
+006B1910    ld      ra,0x20(sp)                                       ; asm/controls/GS_attack_combo.asm line 151
+006B1914    lq      s1,0x10(sp)                                       ; asm/controls/GS_attack_combo.asm line 152
+006B1918    lq      s0,(sp)                                           ; asm/controls/GS_attack_combo.asm line 153
+006B191C    jr      ra                                                ; asm/controls/GS_attack_combo.asm line 154
+006B1920    addiu   sp,0x30                                           ; asm/controls/GS_attack_combo.asm line 155
 006B1924 .org 0x006B4050                                              ; asm/controls/Hammer_Basic_ck.asm line 1
 006B4050    addiu   sp,-0x10                                          ; asm/controls/Hammer_Basic_ck.asm line 2
 006B4054    sd      ra,(sp)                                           ; asm/controls/Hammer_Basic_ck.asm line 3
@@ -10221,89 +10268,97 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006C0498 .org 0x006BEEF8                                              ; asm/controls/GL_attack_combo.asm line 1
 006BEEF8    lhu     v0,0x370(s1)                                      ; asm/controls/GL_attack_combo.asm line 2
 006BEEFC    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 3
-006BEF00 .org 0x006C0618                                              ; asm/controls/GL_attack_combo.asm line 5
-006C0618    lhu     v0,0x370(s1)                                      ; asm/controls/GL_attack_combo.asm line 6
-006C061C    andi    v0,0x100                                          ; asm/controls/GL_attack_combo.asm line 7
-006C0620    beqz    v0,0x6C0820                                       ; asm/controls/GL_attack_combo.asm line 8
-006C0624    ori     v0,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 9
-006C0628    beq     s0,v0,0x6C0820                                    ; asm/controls/GL_attack_combo.asm line 10
-006C062C    nop                                                       ; asm/controls/GL_attack_combo.asm line 11
-006C0630    lhu     v0,0x370(s1)                                      ; asm/controls/GL_attack_combo.asm line 12
-006C0634    andi    v0,0x100                                          ; asm/controls/GL_attack_combo.asm line 13
-006C0638    beqz    v0,0x6C0798                                       ; asm/controls/GL_attack_combo.asm line 14
-006C063C    nop                                                       ; asm/controls/GL_attack_combo.asm line 15
-006C0640    b       0x6C064C                                          ; asm/controls/GL_attack_combo.asm line 16
-006C0644    nop                                                       ; asm/controls/GL_attack_combo.asm line 17
-006C0648 .org 0x006BF3DC                                              ; asm/controls/GL_attack_combo.asm line 19
-006BF3DC    lhu     v0,0x370(s2)                                      ; asm/controls/GL_attack_combo.asm line 20
-006BF3E0    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 21
-006BF3E4 .org 0x006BF45C                                              ; asm/controls/GL_attack_combo.asm line 23
-006BF45C    lhu     v1,0x370(s2)                                      ; asm/controls/GL_attack_combo.asm line 24
-006BF460    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 25
-006BF464 .org 0x006BF684                                              ; asm/controls/GL_attack_combo.asm line 27
-006BF684    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 28
-006BF688    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 29
-006BF68C .org 0x006BFBC0                                              ; asm/controls/GL_attack_combo.asm line 31
-006BFBC0    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 32
-006BFBC4    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 33
-006BFBC8 .org 0x006BFF24                                              ; asm/controls/GL_attack_combo.asm line 35
-006BFF24    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 36
-006BFF28    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 37
-006BFF2C .org 0x006C0090                                              ; asm/controls/GL_attack_combo.asm line 39
-006C0090    lhu     v1,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 40
-006C0094    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 41
-006C0098 .org 0x006C0840                                              ; asm/controls/GL_attack_combo.asm line 43
-006C0840    addiu   sp,-0x10                                          ; asm/controls/GL_attack_combo.asm line 44
-006C0844    sd      ra,(sp)                                           ; asm/controls/GL_attack_combo.asm line 45
-006C0848    jal     0x6B14A0                                          ; asm/controls/GL_attack_combo.asm line 46
-006C084C    nop                                                       ; asm/controls/GL_attack_combo.asm line 47
-006C0850    ori     a3,r0,0xC                                         ; asm/controls/GL_attack_combo.asm line 48
-006C0854    ori     v1,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 49
-006C0858    beq     v0,v1,0x6C0880                                    ; asm/controls/GL_attack_combo.asm line 50
-006C085C    nop                                                       ; asm/controls/GL_attack_combo.asm line 51
-006C0860    ori     v1,r0,0x2                                         ; asm/controls/GL_attack_combo.asm line 52
-006C0864    beq     v0,v1,0x6C08C0                                    ; asm/controls/GL_attack_combo.asm line 53
-006C0868    nop                                                       ; asm/controls/GL_attack_combo.asm line 54
-006C086C    ori     v1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 55
-006C0870    beq     v0,v1,0x6C08AC                                    ; asm/controls/GL_attack_combo.asm line 56
-006C0874    nop                                                       ; asm/controls/GL_attack_combo.asm line 57
-006C0878    b       0x6C08E4                                          ; asm/controls/GL_attack_combo.asm line 58
-006C087C    nop                                                       ; asm/controls/GL_attack_combo.asm line 59
-006C0880 @@doblast:                                                   ; asm/controls/GL_attack_combo.asm line 60
-006C0880    lh      v0,0x7D4(a0)                                      ; asm/controls/GL_attack_combo.asm line 61
-006C0884    bnez    v0,0x6C089C                                       ; asm/controls/GL_attack_combo.asm line 62
-006C0888    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 63
-006C088C    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 64
-006C0890    ori     a2,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 65
-006C0894    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 66
-006C0898    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 67
-006C089C @@fireempty:                                                 ; asm/controls/GL_attack_combo.asm line 68
-006C089C    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 69
-006C08A0    ori     a2,r0,0x13                                        ; asm/controls/GL_attack_combo.asm line 70
-006C08A4    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 71
-006C08A8    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 72
-006C08AC @@dopoke:                                                    ; asm/controls/GL_attack_combo.asm line 73
-006C08AC    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 74
-006C08B0    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 75
-006C08B4    ori     a2,r0,0x2                                         ; asm/controls/GL_attack_combo.asm line 76
-006C08B8    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 77
-006C08BC    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 78
-006C08C0 @@doreload:                                                  ; asm/controls/GL_attack_combo.asm line 79
-006C08C0    lbu     v1,0x1C(a0)                                       ; asm/controls/GL_attack_combo.asm line 80
-006C08C4    lbu     v0,0x1D(a0)                                       ; asm/controls/GL_attack_combo.asm line 81
-006C08C8    slt     at,v1,v0                                          ; asm/controls/GL_attack_combo.asm line 82
-006C08CC    beqz    at,0x6C08E4                                       ; asm/controls/GL_attack_combo.asm line 83
-006C08D0    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 84
-006C08D4    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 85
-006C08D8    ori     a2,r0,0x5                                         ; asm/controls/GL_attack_combo.asm line 86
-006C08DC    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 87
-006C08E0    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 88
-006C08E4 @@donothing:                                                 ; asm/controls/GL_attack_combo.asm line 89
-006C08E4    dmove   v0,zero                                           ; asm/controls/GL_attack_combo.asm line 90
-006C08E8 @@return:                                                    ; asm/controls/GL_attack_combo.asm line 91
-006C08E8    ld      ra,(sp)                                           ; asm/controls/GL_attack_combo.asm line 92
-006C08EC    jr      ra                                                ; asm/controls/GL_attack_combo.asm line 93
-006C08F0    addiu   sp,0x10                                           ; asm/controls/GL_attack_combo.asm line 94
+006BEF00 .org 0x006C0550                                              ; asm/controls/GL_attack_combo.asm line 5
+006C0550    beqz    v0,0x6C0614                                       ; asm/controls/GL_attack_combo.asm line 6
+006C0554    nop                                                       ; asm/controls/GL_attack_combo.asm line 7
+006C0558    lh      v0,0x694(s1)                                      ; asm/controls/GL_attack_combo.asm line 8
+006C055C    slti    v0,v0,0x4B                                        ; asm/controls/GL_attack_combo.asm line 9
+006C0560    bnez    v0,0x6C0614                                       ; asm/controls/GL_attack_combo.asm line 10
+006C0564 .org 0x006C0614                                              ; asm/controls/GL_attack_combo.asm line 12
+006C0614    ori     v0,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 13
+006C0618    beq     s0,v0,0x6C0820                                    ; asm/controls/GL_attack_combo.asm line 14
+006C061C    lhu     v0,0x370(s1)                                      ; asm/controls/GL_attack_combo.asm line 15
+006C0620    andi    at,v0,0x100                                       ; asm/controls/GL_attack_combo.asm line 16
+006C0624    beqz    at,0x6C0820                                       ; asm/controls/GL_attack_combo.asm line 17
+006C0628    ori     v1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 18
+006C062C    andi    at,v0,0x20                                        ; asm/controls/GL_attack_combo.asm line 19
+006C0630    beqz    at,0x6C0640                                       ; asm/controls/GL_attack_combo.asm line 20
+006C0634    nop                                                       ; asm/controls/GL_attack_combo.asm line 21
+006C0638    b       0x6C0798                                          ; asm/controls/GL_attack_combo.asm line 22
+006C063C    nop                                                       ; asm/controls/GL_attack_combo.asm line 23
+006C0640 @@dotriangle:                                                ; asm/controls/GL_attack_combo.asm line 24
+006C0640    b       0x6C064C                                          ; asm/controls/GL_attack_combo.asm line 25
+006C0644    nop                                                       ; asm/controls/GL_attack_combo.asm line 26
+006C0648 .org 0x006BF3DC                                              ; asm/controls/GL_attack_combo.asm line 28
+006BF3DC    lhu     v0,0x370(s2)                                      ; asm/controls/GL_attack_combo.asm line 29
+006BF3E0    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 30
+006BF3E4 .org 0x006BF45C                                              ; asm/controls/GL_attack_combo.asm line 32
+006BF45C    lhu     v1,0x370(s2)                                      ; asm/controls/GL_attack_combo.asm line 33
+006BF460    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 34
+006BF464 .org 0x006BF684                                              ; asm/controls/GL_attack_combo.asm line 36
+006BF684    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 37
+006BF688    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 38
+006BF68C .org 0x006BFBC0                                              ; asm/controls/GL_attack_combo.asm line 40
+006BFBC0    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 41
+006BFBC4    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 42
+006BFBC8 .org 0x006BFF24                                              ; asm/controls/GL_attack_combo.asm line 44
+006BFF24    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 45
+006BFF28    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 46
+006BFF2C .org 0x006C0090                                              ; asm/controls/GL_attack_combo.asm line 48
+006C0090    lhu     v1,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 49
+006C0094    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 50
+006C0098 .org 0x006C0840                                              ; asm/controls/GL_attack_combo.asm line 52
+006C0840    addiu   sp,-0x10                                          ; asm/controls/GL_attack_combo.asm line 53
+006C0844    sd      ra,(sp)                                           ; asm/controls/GL_attack_combo.asm line 54
+006C0848    jal     0x6B14A0                                          ; asm/controls/GL_attack_combo.asm line 55
+006C084C    nop                                                       ; asm/controls/GL_attack_combo.asm line 56
+006C0850    ori     a3,r0,0xC                                         ; asm/controls/GL_attack_combo.asm line 57
+006C0854    ori     v1,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 58
+006C0858    beq     v0,v1,0x6C0880                                    ; asm/controls/GL_attack_combo.asm line 59
+006C085C    nop                                                       ; asm/controls/GL_attack_combo.asm line 60
+006C0860    ori     v1,r0,0x2                                         ; asm/controls/GL_attack_combo.asm line 61
+006C0864    beq     v0,v1,0x6C08C0                                    ; asm/controls/GL_attack_combo.asm line 62
+006C0868    nop                                                       ; asm/controls/GL_attack_combo.asm line 63
+006C086C    ori     v1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 64
+006C0870    beq     v0,v1,0x6C08AC                                    ; asm/controls/GL_attack_combo.asm line 65
+006C0874    nop                                                       ; asm/controls/GL_attack_combo.asm line 66
+006C0878    b       0x6C08E4                                          ; asm/controls/GL_attack_combo.asm line 67
+006C087C    nop                                                       ; asm/controls/GL_attack_combo.asm line 68
+006C0880 @@doblast:                                                   ; asm/controls/GL_attack_combo.asm line 69
+006C0880    lh      v0,0x7D4(a0)                                      ; asm/controls/GL_attack_combo.asm line 70
+006C0884    bnez    v0,0x6C089C                                       ; asm/controls/GL_attack_combo.asm line 71
+006C0888    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 72
+006C088C    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 73
+006C0890    ori     a2,r0,0x3                                         ; asm/controls/GL_attack_combo.asm line 74
+006C0894    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 75
+006C0898    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 76
+006C089C @@fireempty:                                                 ; asm/controls/GL_attack_combo.asm line 77
+006C089C    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 78
+006C08A0    ori     a2,r0,0x13                                        ; asm/controls/GL_attack_combo.asm line 79
+006C08A4    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 80
+006C08A8    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 81
+006C08AC @@dopoke:                                                    ; asm/controls/GL_attack_combo.asm line 82
+006C08AC    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 83
+006C08B0    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 84
+006C08B4    ori     a2,r0,0x2                                         ; asm/controls/GL_attack_combo.asm line 85
+006C08B8    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 86
+006C08BC    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 87
+006C08C0 @@doreload:                                                  ; asm/controls/GL_attack_combo.asm line 88
+006C08C0    lbu     v1,0x1C(a0)                                       ; asm/controls/GL_attack_combo.asm line 89
+006C08C4    lbu     v0,0x1D(a0)                                       ; asm/controls/GL_attack_combo.asm line 90
+006C08C8    slt     at,v1,v0                                          ; asm/controls/GL_attack_combo.asm line 91
+006C08CC    beqz    at,0x6C08E4                                       ; asm/controls/GL_attack_combo.asm line 92
+006C08D0    ori     a1,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 93
+006C08D4    jal     0x3AB9D0                                          ; asm/controls/GL_attack_combo.asm line 94
+006C08D8    ori     a2,r0,0x5                                         ; asm/controls/GL_attack_combo.asm line 95
+006C08DC    b       0x6C08E8                                          ; asm/controls/GL_attack_combo.asm line 96
+006C08E0    ori     v0,r0,0x1                                         ; asm/controls/GL_attack_combo.asm line 97
+006C08E4 @@donothing:                                                 ; asm/controls/GL_attack_combo.asm line 98
+006C08E4    dmove   v0,zero                                           ; asm/controls/GL_attack_combo.asm line 99
+006C08E8 @@return:                                                    ; asm/controls/GL_attack_combo.asm line 100
+006C08E8    ld      ra,(sp)                                           ; asm/controls/GL_attack_combo.asm line 101
+006C08EC    jr      ra                                                ; asm/controls/GL_attack_combo.asm line 102
+006C08F0    addiu   sp,0x10                                           ; asm/controls/GL_attack_combo.asm line 103
 006C08F4 .org 0x006BCDF0                                              ; asm/controls/HH_Basic_ck.asm line 1
 006BCDF0    addiu   sp,-0x10                                          ; asm/controls/HH_Basic_ck.asm line 2
 006BCDF4    sd      ra,(sp)                                           ; asm/controls/HH_Basic_ck.asm line 3
@@ -10853,27 +10908,30 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006C25E8    ld      ra,(sp)                                           ; asm/controls/Bow_Basic_ck.asm line 57
 006C25EC    jr      ra                                                ; asm/controls/Bow_Basic_ck.asm line 58
 006C25F0    addiu   sp,0x10                                           ; asm/controls/Bow_Basic_ck.asm line 59
-006C25F4 .org 0x006C1230                                              ; asm/controls/Bow_attack_combo.asm line 1
-006C1230    lhu     v1,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 2
-006C1234    andi    v1,0x100                                          ; asm/controls/Bow_attack_combo.asm line 3
-006C1238 .org 0x006C1560                                              ; asm/controls/Bow_attack_combo.asm line 5
-006C1560    lhu     v0,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 6
-006C1564    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 7
-006C1568 .org 0x006C1820                                              ; asm/controls/Bow_attack_combo.asm line 9
-006C1820    lhu     v1,0x370(s1)                                      ; asm/controls/Bow_attack_combo.asm line 10
-006C1824    andi    v1,0x20                                           ; asm/controls/Bow_attack_combo.asm line 11
-006C1828 .org 0x006C1868                                              ; asm/controls/Bow_attack_combo.asm line 13
-006C1868    lhu     v1,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 14
-006C186C    andi    v1,0x100                                          ; asm/controls/Bow_attack_combo.asm line 15
-006C1870 .org 0x006C1CC8                                              ; asm/controls/Bow_attack_combo.asm line 17
-006C1CC8    lhu     v0,0x374(s0)                                      ; asm/controls/Bow_attack_combo.asm line 18
-006C1CCC    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 19
-006C1CD0 .org 0x006C2748                                              ; asm/controls/Bow_attack_combo.asm line 21
-006C2748    lhu     v0,0x370(s1)                                      ; asm/controls/Bow_attack_combo.asm line 22
-006C274C    andi    v0,0x20                                           ; asm/controls/Bow_attack_combo.asm line 23
-006C2750 .org 0x006C2720                                              ; asm/controls/Bow_attack_combo.asm line 25
-006C2720    lhu     v0,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 26
-006C2724    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 27
+006C25F4 .org 0x006C2818                                              ; asm/controls/Bow_attack_combo.asm line 1
+006C2818    lhu     v0,0x370(a0)                                      ; asm/controls/Bow_attack_combo.asm line 2
+006C281C    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 3
+006C2820 .org 0x006C1230                                              ; asm/controls/Bow_attack_combo.asm line 5
+006C1230    lhu     v1,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 6
+006C1234    andi    v1,0x100                                          ; asm/controls/Bow_attack_combo.asm line 7
+006C1238 .org 0x006C1560                                              ; asm/controls/Bow_attack_combo.asm line 9
+006C1560    lhu     v0,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 10
+006C1564    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 11
+006C1568 .org 0x006C1820                                              ; asm/controls/Bow_attack_combo.asm line 13
+006C1820    lhu     v1,0x370(s1)                                      ; asm/controls/Bow_attack_combo.asm line 14
+006C1824    andi    v1,0x20                                           ; asm/controls/Bow_attack_combo.asm line 15
+006C1828 .org 0x006C1868                                              ; asm/controls/Bow_attack_combo.asm line 17
+006C1868    lhu     v1,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 18
+006C186C    andi    v1,0x100                                          ; asm/controls/Bow_attack_combo.asm line 19
+006C1870 .org 0x006C1CC8                                              ; asm/controls/Bow_attack_combo.asm line 21
+006C1CC8    lhu     v0,0x374(s0)                                      ; asm/controls/Bow_attack_combo.asm line 22
+006C1CCC    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 23
+006C1CD0 .org 0x006C2748                                              ; asm/controls/Bow_attack_combo.asm line 25
+006C2748    lhu     v0,0x370(s1)                                      ; asm/controls/Bow_attack_combo.asm line 26
+006C274C    andi    v0,0x20                                           ; asm/controls/Bow_attack_combo.asm line 27
+006C2750 .org 0x006C2720                                              ; asm/controls/Bow_attack_combo.asm line 29
+006C2720    lhu     v0,0x374(s1)                                      ; asm/controls/Bow_attack_combo.asm line 30
+006C2724    andi    v0,0x100                                          ; asm/controls/Bow_attack_combo.asm line 31
 006C2728 .org 0x006B2480                                              ; asm/controls/Gun_Basic_ck.asm line 1
 006B2480    addiu   sp,-0x20                                          ; asm/controls/Gun_Basic_ck.asm line 2
 006B2484    sd      ra,0x10(sp)                                       ; asm/controls/Gun_Basic_ck.asm line 3
@@ -10994,4 +11052,7 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B2620    lq      s0,(sp)                                           ; asm/controls/Gun_Basic_ck.asm line 121
 006B2624    jr      ra                                                ; asm/controls/Gun_Basic_ck.asm line 122
 006B2628    addiu   sp,0x20                                           ; asm/controls/Gun_Basic_ck.asm line 123
-006B262C .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 50
+006B262C .org 0x006B2688                                              ; asm/controls/Gun_attack_combo.asm line 1
+006B2688    jal     0x19A000                                          ; asm/controls/Gun_attack_combo.asm line 2
+006B268C    nop                                                       ; asm/controls/Gun_attack_combo.asm line 3
+006B2690 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 51

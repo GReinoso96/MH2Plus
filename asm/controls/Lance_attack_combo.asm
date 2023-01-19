@@ -101,7 +101,7 @@
     beq         v0, v1, @@DoStop
     nop
     li          v1, 0x2
-    beq         v0, v1, @@DoPoke
+    beq         v0, v1, @@DoStop
     nop
     li          v1, 0x1
     beq         v0, v1, @@DoPoke
@@ -122,7 +122,7 @@
 .org 0x006b50e8 ; Hit Wall
     jal         GetAttackBtn
     dmove       a0, s0
-    li          v1, 0x3
+    li          v1, 0x2
     beq         v0, v1, @@DoStop
     nop
     b           0x006b5110

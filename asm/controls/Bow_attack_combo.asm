@@ -1,3 +1,7 @@
+.org 0x006c2818 ; Unsheathe
+    lhu         v0, InputFace(a0)
+    andi        v0, BtnTriangle
+    
 .org 0x006c1230 ; From Shoot
     lhu         v1, InputFaceHeld(s1)
     andi        v1, BtnTriangle

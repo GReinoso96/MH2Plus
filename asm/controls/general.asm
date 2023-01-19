@@ -21,6 +21,10 @@
     b       0x711498
     nop
 
+.org 0x00711a50 ; Kick Button
+    lhu         v0, InputFace(s3)
+    andi        v0, BtnSelect
+
 .org 0x0071149c ; Weapon Sheathe to Square only
     andi    v0, v1, BtnSquare
 
@@ -48,6 +52,9 @@
     li          v0, 0x3
 @@CheckCircle:
     lhu         v0, InputFace(a0)
+    andi        at, v0, BtnTriangle
+    bnez        at, @@Special
+    nop
     andi        at, v0, BtnCircle
     beqz        at, @@None
     nop
@@ -57,7 +64,10 @@
     b           @@End
     li          v0, 0x1
 @@None:
+    b           @@End
     li          v0, 0x0
+@@Special:
+    li          v0, 0x3
 @@End:
     jr          ra
     nop

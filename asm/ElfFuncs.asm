@@ -215,3 +215,37 @@
     jr          ra
     nop
 .align 8
+.definelabel GunUnsheatheCk,.-(0x280)
+    lhu         v0, InputFace(a0)
+    andi        at, v0, BtnTriangle
+    beqz        at, @@Nope
+    nop
+    andi        at, v0, BtnCircle
+    beqz        at, @@Nope
+    nop
+    andi        at, v0, BtnR1
+    beqz        at, @@Nope
+    nop
+    b           @@End
+    li          v0, 0x1
+@@Nope:
+    li          v0, 0x0
+@@End:
+    jr          ra
+    nop
+.align 8
+.definelabel GlCircleCheck,.-(0x280)
+    lhu         v0, InputFace(at)
+    andi        at, v0, BtnTriangle
+    bnez        at, @@Nope
+    nop
+    andi        at, v0, BtnCircle
+    beqz        at, @@Nope
+    li          v0, 0x1
+    b           @@Return
+    nop
+@@Nope:
+    li          v0, 0x0
+@@Return:
+    jr          ra
+    nop
