@@ -2,16 +2,17 @@
 MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM_662.80.
 
 # English Translation
-This patch has an optional PROVISORY English translation featuring Weapon, Item and Skill names, nothing else will be touched, there are other people working on a proper translation and this patch will be updated with the necessary changes by then.
+This patch has an optional PROVISORY translation meant to help people until the release of [Team Break Art's complete localization of the game](https://break-arts.com/projects/mh2dos/), you can still find it under previous releases but it is now entirely deprecated.
 
 All translated strings match their Freedom Unite equivalents where possible, things that are exclusive to Dos have been translated to match the style.
 
 # Usage
-## Download
-  Go to https://github.com/GReinoso96/MH2Plus/releases/tag/Release
-  Download the patch you want and apply with an xdelta patcher.
+  * Go to [the releases tab](https://github.com/GReinoso96/MH2Plus/releases) and download the latest version for your ISO.
+  * Apply the xdelta using [DeltaPatcher](https://www.romhacking.net/utilities/704/)
+  
+  There are currently 2 versions of the patch, one for the original Japanese version and one to use on top of the Break Arts english translation.
 
-## Set-Up
+# Development
   First, you must supply the following:
   * AFSPacker.exe: https://github.com/MaikelChan/AFSPacker
   * Armips.exe: https://github.com/Kingcom/armips
