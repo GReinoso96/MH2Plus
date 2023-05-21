@@ -77,8 +77,8 @@
     b           @@End
     nop
 @@BackwardCombos:
-    li          v1, 0x2
-    beq         s0, v1, @@End
+    li          v1, 0x3
+    beq         s0, v1, @@BwCheckCharged ; Came from 3 (Downward)
     li          v1, 0x4
     beq         s0, v1, @@BwCheckCharged ; Came from 4 (Charged)
     li          v1, 0x1
@@ -115,8 +115,8 @@
     b           @@End
     nop
 @@SideslashCombos:
-    li          v1, 0x1
-    beq         s0, v1, @@End
+    li          v1, 0x3
+    beq         s0, v1, @@BwCheckCharged ; Came from 3 (Downward)
     li          v1, 0x4
     beq         s0, v1, @@SlCheckCharged ; Came from 4 (Charged)
     li          v1, 0x2
