@@ -1,9 +1,14 @@
 .org 0x006b1a28 ; GS Unsheathe Attack
-    lhu         v0, InputFace(a0)
-    andi        v0, BtnTriangle
-    beqz        v0, 0x006b1a60
-    li          a1, 0x1
+    lhu         v0, InputFaceHeld(a0)
+    andi        v1, v0, BtnTriangle
+    beqz        v1, 0x006b1a60
+    nop
+    andi        v1, v0, BtnR2
+    beqz        v1, @@Do
+    li          a2, 0xD
     li          a2, 0x14
+@@Do:
+    li          a1, 0x1
     jal         Pl_atk_set
     li          a3, 0x4
     b           0x006b1a60

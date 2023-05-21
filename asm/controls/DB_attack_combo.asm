@@ -66,24 +66,30 @@
 
 .org 0x006b7854 ; From Demon Spin Rewrite
     lhu         v1, InputFace(s1)
-    andi        v1, BtnTriangleCircle
-    beqz        v1, 0x006b78d8 ; Check Roll
+    andi        at, v1, BtnTriangleCircle
+    beqz        at, 0x006b78d8
     nop
-    lhu         v1, InputFace(s1)
-    andi        at, v1, BtnTriangle
-    beqz        at, @@DoSpin
+    andi        at, v1, BtnCircle
+    beqz        at, @@DoTriangle
+    li          v1, 0x6
+    b           0x006b78d8
+    sb          v1, 0x6(s1)
+@@DoTriangle:
     li          a1, 0x1
     sb          a1, 0x6(s1)
-    lhu         a0, 0x380(s1)
-    andi        v1, a0, 0x800
-    beqz        v1, 0x006b78a8 ; Check Right
-    nop
-    b           0x006b7884 ; Check Roll
-    sw          a1, 0x8(s1)
-@@DoSpin:
-    li          v1, 0x6
-    b           0x006b78d8 ; Normalize
-    sb          v1, 0x6(s1)
+    lhu         v1, InputLAnalog(s1)
+    andi        at, v1, 0x400 ; Right
+    beqz        at, @@DoLeft
+    li          v1, 0x2
+    b           0x006b78d8
+    sb          v1, 0x8(s1)
+@@DoLeft:
+    lhu         v1, InputLAnalog(s1)
+    andi        at, v1, 0x800 ; Left
+    beqz        at, 0x006b78d8
+    li          v1, 0x1
+    b           0x006b78d8
+    sb          v1, 0x8(s1)
 
 .org 0x006b7ed0 ; Bounce
     lhu         v1, InputFace(s0)

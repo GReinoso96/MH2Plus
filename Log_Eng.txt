@@ -1,6 +1,6 @@
 ﻿; 38 files included
-; 11582 lines
-; 3655 labels
+; 11592 lines
+; 3656 labels
 ; 19 equations
 
 ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm
@@ -282,24 +282,22 @@ FFFFFFFF .open "ogSLPM_662.80","SLPM_662.80",0x00100000               ; D:\pcsx2
 0019A2B4    jr      ra                                                ; asm/ElfFuncs.asm line 234
 0019A2B8    nop                                                       ; asm/ElfFuncs.asm line 235
 0019A2BC .align 0x00000008                                            ; asm/ElfFuncs.asm line 236
-0019A040 glexck:                                                      ; asm/ElfFuncs.asm line 237
-0019A2C0    andi    at,v0,0x100                                       ; asm/ElfFuncs.asm line 238
-0019A2C4    beqz    at,0x19A2E8                                       ; asm/ElfFuncs.asm line 239
-0019A2C8    nop                                                       ; asm/ElfFuncs.asm line 240
-0019A2CC    andi    at,v0,0x20                                        ; asm/ElfFuncs.asm line 241
-0019A2D0    beqz    at,0x19A2E0                                       ; asm/ElfFuncs.asm line 242
-0019A2D4    nop                                                       ; asm/ElfFuncs.asm line 243
-0019A2D8    b       0x19A2EC                                          ; asm/ElfFuncs.asm line 244
-0019A2DC    ori     v0,r0,0x1                                         ; asm/ElfFuncs.asm line 245
-0019A2E0 @@onlytriangle:                                              ; asm/ElfFuncs.asm line 246
-0019A2E0    ori     v0,r0,0x2                                         ; asm/ElfFuncs.asm line 247
-0019A2E4    b       0x19A2EC                                          ; asm/ElfFuncs.asm line 248
-0019A2E8 @@nothing:                                                   ; asm/ElfFuncs.asm line 249
-0019A2E8    ori     v0,r0,0x0                                         ; asm/ElfFuncs.asm line 250
-0019A2EC @@return:                                                    ; asm/ElfFuncs.asm line 251
-0019A2EC    jr      ra                                                ; asm/ElfFuncs.asm line 252
-0019A2F0    nop                                                       ; asm/ElfFuncs.asm line 253
-0019A2F4 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 6
+0019A040 glcirclecheck:                                               ; asm/ElfFuncs.asm line 237
+0019A2C0    lhu     v0,0x370(at)                                      ; asm/ElfFuncs.asm line 238
+0019A2C4    andi    at,v0,0x100                                       ; asm/ElfFuncs.asm line 239
+0019A2C8    bnez    at,0x19A2E4                                       ; asm/ElfFuncs.asm line 240
+0019A2CC    nop                                                       ; asm/ElfFuncs.asm line 241
+0019A2D0    andi    at,v0,0x20                                        ; asm/ElfFuncs.asm line 242
+0019A2D4    beqz    at,0x19A2E4                                       ; asm/ElfFuncs.asm line 243
+0019A2D8    ori     v0,r0,0x1                                         ; asm/ElfFuncs.asm line 244
+0019A2DC    b       0x19A2E8                                          ; asm/ElfFuncs.asm line 245
+0019A2E0    nop                                                       ; asm/ElfFuncs.asm line 246
+0019A2E4 @@nope:                                                      ; asm/ElfFuncs.asm line 247
+0019A2E4    ori     v0,r0,0x0                                         ; asm/ElfFuncs.asm line 248
+0019A2E8 @@return:                                                    ; asm/ElfFuncs.asm line 249
+0019A2E8    jr      ra                                                ; asm/ElfFuncs.asm line 250
+0019A2EC    nop                                                       ; asm/ElfFuncs.asm line 251
+0019A2F0 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 6
 FFFFFFFF .open "unn1/sub_main.ovl","sub_main.ovl",0x002E3900          ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 9
 0035A040 @chatstartmode:                                              ; asm/ChatQuest.asm line 1
 0033EBFC @chatstartbuttonquest:                                       ; asm/ChatQuest.asm line 2
@@ -9450,74 +9448,83 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 00716238 .org 0x007113C0                                              ; asm/controls/general.asm line 20
 007113C0    b       0x711498                                          ; asm/controls/general.asm line 21
 007113C4    nop                                                       ; asm/controls/general.asm line 22
-007113C8 .org 0x0071149C                                              ; asm/controls/general.asm line 24
-0071149C    andi    v0,v1,0x200                                       ; asm/controls/general.asm line 25
-007114A0 .org 0x00720670                                              ; asm/controls/general.asm line 27
-00720670    lhu     v0,0x370(s1)                                      ; asm/controls/general.asm line 28
-00720674    andi    v0,0x100                                          ; asm/controls/general.asm line 29
-00720678 .org 0x006B14A0                                              ; asm/controls/general.asm line 31
-006B14A0    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 32
-006B14A4    andi    at,v0,0x4000                                      ; asm/controls/general.asm line 33
-006B14A8    beqz    at,0x6B14B8                                       ; asm/controls/general.asm line 34
-006B14AC    nop                                                       ; asm/controls/general.asm line 35
-006B14B0    b       0x6B1504                                          ; asm/controls/general.asm line 36
-006B14B4    ori     v0,r0,0x4                                         ; asm/controls/general.asm line 37
-006B14B8 @@checktro:                                                  ; asm/controls/general.asm line 38
-006B14B8    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 39
-006B14BC    andi    at,v0,0x100                                       ; asm/controls/general.asm line 40
-006B14C0    beqz    at,0x6B14E0                                       ; asm/controls/general.asm line 41
-006B14C4    nop                                                       ; asm/controls/general.asm line 42
-006B14C8    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 43
-006B14CC    andi    at,v0,0x20                                        ; asm/controls/general.asm line 44
-006B14D0    beqz    at,0x6B14F8                                       ; asm/controls/general.asm line 45
-006B14D4    nop                                                       ; asm/controls/general.asm line 46
-006B14D8    b       0x6B1504                                          ; asm/controls/general.asm line 47
-006B14DC    ori     v0,r0,0x3                                         ; asm/controls/general.asm line 48
-006B14E0 @@checkcircle:                                               ; asm/controls/general.asm line 49
-006B14E0    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 50
-006B14E4    andi    at,v0,0x20                                        ; asm/controls/general.asm line 51
-006B14E8    beqz    at,0x6B1500                                       ; asm/controls/general.asm line 52
-006B14EC    nop                                                       ; asm/controls/general.asm line 53
-006B14F0    b       0x6B1504                                          ; asm/controls/general.asm line 54
-006B14F4    ori     v0,r0,0x2                                         ; asm/controls/general.asm line 55
-006B14F8 @@onlytriangle:                                              ; asm/controls/general.asm line 56
-006B14F8    b       0x6B1504                                          ; asm/controls/general.asm line 57
-006B14FC    ori     v0,r0,0x1                                         ; asm/controls/general.asm line 58
-006B1500 @@none:                                                      ; asm/controls/general.asm line 59
-006B1500    ori     v0,r0,0x0                                         ; asm/controls/general.asm line 60
-006B1504 @@end:                                                       ; asm/controls/general.asm line 61
-006B1504    jr      ra                                                ; asm/controls/general.asm line 62
-006B1508    nop                                                       ; asm/controls/general.asm line 63
-006B150C .org 0x006BAA80                                              ; asm/controls/general.asm line 65
-006BAA80    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 66
-006BAA84    andi    at,v0,0x80                                        ; asm/controls/general.asm line 67
-006BAA88    beqz    at,0x6BAA98                                       ; asm/controls/general.asm line 68
-006BAA8C    nop                                                       ; asm/controls/general.asm line 69
-006BAA90    b       0x6BAAD8                                          ; asm/controls/general.asm line 70
-006BAA94    ori     v0,r0,0x4                                         ; asm/controls/general.asm line 71
-006BAA98 @@checktro:                                                  ; asm/controls/general.asm line 72
-006BAA98    andi    at,v0,0x100                                       ; asm/controls/general.asm line 73
-006BAA9C    beqz    at,0x6BAAB8                                       ; asm/controls/general.asm line 74
-006BAAA0    nop                                                       ; asm/controls/general.asm line 75
-006BAAA4    andi    at,v0,0x20                                        ; asm/controls/general.asm line 76
-006BAAA8    beqz    at,0x6BAACC                                       ; asm/controls/general.asm line 77
-006BAAAC    nop                                                       ; asm/controls/general.asm line 78
-006BAAB0    b       0x6BAAD8                                          ; asm/controls/general.asm line 79
-006BAAB4    ori     v0,r0,0x3                                         ; asm/controls/general.asm line 80
-006BAAB8 @@checkcircle:                                               ; asm/controls/general.asm line 81
-006BAAB8    andi    at,v0,0x20                                        ; asm/controls/general.asm line 82
-006BAABC    beqz    at,0x6BAAD4                                       ; asm/controls/general.asm line 83
-006BAAC0    nop                                                       ; asm/controls/general.asm line 84
-006BAAC4    b       0x6BAAD8                                          ; asm/controls/general.asm line 85
-006BAAC8    ori     v0,r0,0xA                                         ; asm/controls/general.asm line 86
-006BAACC @@onlytriangle:                                              ; asm/controls/general.asm line 87
-006BAACC    b       0x6BAAD8                                          ; asm/controls/general.asm line 88
-006BAAD0    ori     v0,r0,0x1                                         ; asm/controls/general.asm line 89
-006BAAD4 @@none:                                                      ; asm/controls/general.asm line 90
-006BAAD4    ori     v0,r0,0x0                                         ; asm/controls/general.asm line 91
-006BAAD8 @@end:                                                       ; asm/controls/general.asm line 92
-006BAAD8    jr      ra                                                ; asm/controls/general.asm line 93
-006BAADC    nop                                                       ; asm/controls/general.asm line 94
+007113C8 .org 0x00711A50                                              ; asm/controls/general.asm line 24
+00711A50    lhu     v0,0x370(s3)                                      ; asm/controls/general.asm line 25
+00711A54    andi    v0,0x4000                                         ; asm/controls/general.asm line 26
+00711A58 .org 0x0071149C                                              ; asm/controls/general.asm line 28
+0071149C    andi    v0,v1,0x200                                       ; asm/controls/general.asm line 29
+007114A0 .org 0x00720670                                              ; asm/controls/general.asm line 31
+00720670    lhu     v0,0x370(s1)                                      ; asm/controls/general.asm line 32
+00720674    andi    v0,0x100                                          ; asm/controls/general.asm line 33
+00720678 .org 0x006B14A0                                              ; asm/controls/general.asm line 35
+006B14A0    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 36
+006B14A4    andi    at,v0,0x4000                                      ; asm/controls/general.asm line 37
+006B14A8    beqz    at,0x6B14B8                                       ; asm/controls/general.asm line 38
+006B14AC    nop                                                       ; asm/controls/general.asm line 39
+006B14B0    b       0x6B1518                                          ; asm/controls/general.asm line 40
+006B14B4    ori     v0,r0,0x4                                         ; asm/controls/general.asm line 41
+006B14B8 @@checktro:                                                  ; asm/controls/general.asm line 42
+006B14B8    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 43
+006B14BC    andi    at,v0,0x100                                       ; asm/controls/general.asm line 44
+006B14C0    beqz    at,0x6B14E0                                       ; asm/controls/general.asm line 45
+006B14C4    nop                                                       ; asm/controls/general.asm line 46
+006B14C8    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 47
+006B14CC    andi    at,v0,0x20                                        ; asm/controls/general.asm line 48
+006B14D0    beqz    at,0x6B1504                                       ; asm/controls/general.asm line 49
+006B14D4    nop                                                       ; asm/controls/general.asm line 50
+006B14D8    b       0x6B1518                                          ; asm/controls/general.asm line 51
+006B14DC    ori     v0,r0,0x3                                         ; asm/controls/general.asm line 52
+006B14E0 @@checkcircle:                                               ; asm/controls/general.asm line 53
+006B14E0    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 54
+006B14E4    andi    at,v0,0x100                                       ; asm/controls/general.asm line 55
+006B14E8    bnez    at,0x6B1514                                       ; asm/controls/general.asm line 56
+006B14EC    nop                                                       ; asm/controls/general.asm line 57
+006B14F0    andi    at,v0,0x20                                        ; asm/controls/general.asm line 58
+006B14F4    beqz    at,0x6B150C                                       ; asm/controls/general.asm line 59
+006B14F8    nop                                                       ; asm/controls/general.asm line 60
+006B14FC    b       0x6B1518                                          ; asm/controls/general.asm line 61
+006B1500    ori     v0,r0,0x2                                         ; asm/controls/general.asm line 62
+006B1504 @@onlytriangle:                                              ; asm/controls/general.asm line 63
+006B1504    b       0x6B1518                                          ; asm/controls/general.asm line 64
+006B1508    ori     v0,r0,0x1                                         ; asm/controls/general.asm line 65
+006B150C @@none:                                                      ; asm/controls/general.asm line 66
+006B150C    b       0x6B1518                                          ; asm/controls/general.asm line 67
+006B1510    ori     v0,r0,0x0                                         ; asm/controls/general.asm line 68
+006B1514 @@special:                                                   ; asm/controls/general.asm line 69
+006B1514    ori     v0,r0,0x3                                         ; asm/controls/general.asm line 70
+006B1518 @@end:                                                       ; asm/controls/general.asm line 71
+006B1518    jr      ra                                                ; asm/controls/general.asm line 72
+006B151C    nop                                                       ; asm/controls/general.asm line 73
+006B1520 .org 0x006BAA80                                              ; asm/controls/general.asm line 75
+006BAA80    lhu     v0,0x370(a0)                                      ; asm/controls/general.asm line 76
+006BAA84    andi    at,v0,0x80                                        ; asm/controls/general.asm line 77
+006BAA88    beqz    at,0x6BAA98                                       ; asm/controls/general.asm line 78
+006BAA8C    nop                                                       ; asm/controls/general.asm line 79
+006BAA90    b       0x6BAAD8                                          ; asm/controls/general.asm line 80
+006BAA94    ori     v0,r0,0x4                                         ; asm/controls/general.asm line 81
+006BAA98 @@checktro:                                                  ; asm/controls/general.asm line 82
+006BAA98    andi    at,v0,0x100                                       ; asm/controls/general.asm line 83
+006BAA9C    beqz    at,0x6BAAB8                                       ; asm/controls/general.asm line 84
+006BAAA0    nop                                                       ; asm/controls/general.asm line 85
+006BAAA4    andi    at,v0,0x20                                        ; asm/controls/general.asm line 86
+006BAAA8    beqz    at,0x6BAACC                                       ; asm/controls/general.asm line 87
+006BAAAC    nop                                                       ; asm/controls/general.asm line 88
+006BAAB0    b       0x6BAAD8                                          ; asm/controls/general.asm line 89
+006BAAB4    ori     v0,r0,0x3                                         ; asm/controls/general.asm line 90
+006BAAB8 @@checkcircle:                                               ; asm/controls/general.asm line 91
+006BAAB8    andi    at,v0,0x20                                        ; asm/controls/general.asm line 92
+006BAABC    beqz    at,0x6BAAD4                                       ; asm/controls/general.asm line 93
+006BAAC0    nop                                                       ; asm/controls/general.asm line 94
+006BAAC4    b       0x6BAAD8                                          ; asm/controls/general.asm line 95
+006BAAC8    ori     v0,r0,0xA                                         ; asm/controls/general.asm line 96
+006BAACC @@onlytriangle:                                              ; asm/controls/general.asm line 97
+006BAACC    b       0x6BAAD8                                          ; asm/controls/general.asm line 98
+006BAAD0    ori     v0,r0,0x1                                         ; asm/controls/general.asm line 99
+006BAAD4 @@none:                                                      ; asm/controls/general.asm line 100
+006BAAD4    ori     v0,r0,0x0                                         ; asm/controls/general.asm line 101
+006BAAD8 @@end:                                                       ; asm/controls/general.asm line 102
+006BAAD8    jr      ra                                                ; asm/controls/general.asm line 103
+006BAADC    nop                                                       ; asm/controls/general.asm line 104
 006BAAE0 .org 0x006B6570                                              ; asm/controls/SnS_Basic_ck.asm line 1
 006B6570    addiu   sp,-0x10                                          ; asm/controls/SnS_Basic_ck.asm line 2
 006B6574    sd      ra,(sp)                                           ; asm/controls/SnS_Basic_ck.asm line 3
@@ -10094,7 +10101,7 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B4DD0    beq     v0,v1,0x6B4DF8                                    ; asm/controls/Lance_attack_combo.asm line 101
 006B4DD4    nop                                                       ; asm/controls/Lance_attack_combo.asm line 102
 006B4DD8    ori     v1,r0,0x2                                         ; asm/controls/Lance_attack_combo.asm line 103
-006B4DDC    beq     v0,v1,0x6B4E08                                    ; asm/controls/Lance_attack_combo.asm line 104
+006B4DDC    beq     v0,v1,0x6B4DF8                                    ; asm/controls/Lance_attack_combo.asm line 104
 006B4DE0    nop                                                       ; asm/controls/Lance_attack_combo.asm line 105
 006B4DE4    ori     v1,r0,0x1                                         ; asm/controls/Lance_attack_combo.asm line 106
 006B4DE8    beq     v0,v1,0x6B4E08                                    ; asm/controls/Lance_attack_combo.asm line 107
@@ -10114,7 +10121,7 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B4E18 .org 0x006B50E8                                              ; asm/controls/Lance_attack_combo.asm line 122
 006B50E8    jal     0x6B14A0                                          ; asm/controls/Lance_attack_combo.asm line 123
 006B50EC    dmove   a0,s0                                             ; asm/controls/Lance_attack_combo.asm line 124
-006B50F0    ori     v1,r0,0x3                                         ; asm/controls/Lance_attack_combo.asm line 125
+006B50F0    ori     v1,r0,0x2                                         ; asm/controls/Lance_attack_combo.asm line 125
 006B50F4    beq     v0,v1,0x6B5104                                    ; asm/controls/Lance_attack_combo.asm line 126
 006B50F8    nop                                                       ; asm/controls/Lance_attack_combo.asm line 127
 006B50FC    b       0x6B5110                                          ; asm/controls/Lance_attack_combo.asm line 128
@@ -10266,8 +10273,8 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006C0490    jr      ra                                                ; asm/controls/GL_Basic_ck.asm line 74
 006C0494    addiu   sp,0x10                                           ; asm/controls/GL_Basic_ck.asm line 75
 006C0498 .org 0x006BEEF8                                              ; asm/controls/GL_attack_combo.asm line 1
-006BEEF8    lhu     v0,0x370(s1)                                      ; asm/controls/GL_attack_combo.asm line 2
-006BEEFC    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 3
+006BEEF8    jal     0x19A040                                          ; asm/controls/GL_attack_combo.asm line 2
+006BEEFC    dmove   at,s1                                             ; asm/controls/GL_attack_combo.asm line 3
 006BEF00 .org 0x006C0550                                              ; asm/controls/GL_attack_combo.asm line 5
 006C0550    beqz    v0,0x6C0614                                       ; asm/controls/GL_attack_combo.asm line 6
 006C0554    nop                                                       ; asm/controls/GL_attack_combo.asm line 7
@@ -10296,14 +10303,14 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006BF45C    lhu     v1,0x370(s2)                                      ; asm/controls/GL_attack_combo.asm line 33
 006BF460    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 34
 006BF464 .org 0x006BF684                                              ; asm/controls/GL_attack_combo.asm line 36
-006BF684    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 37
-006BF688    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 38
+006BF684    jal     0x19A040                                          ; asm/controls/GL_attack_combo.asm line 37
+006BF688    dmove   at,s0                                             ; asm/controls/GL_attack_combo.asm line 38
 006BF68C .org 0x006BFBC0                                              ; asm/controls/GL_attack_combo.asm line 40
-006BFBC0    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 41
-006BFBC4    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 42
+006BFBC0    jal     0x19A040                                          ; asm/controls/GL_attack_combo.asm line 41
+006BFBC4    dmove   at,s0                                             ; asm/controls/GL_attack_combo.asm line 42
 006BFBC8 .org 0x006BFF24                                              ; asm/controls/GL_attack_combo.asm line 44
-006BFF24    lhu     v0,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 45
-006BFF28    andi    v0,0x20                                           ; asm/controls/GL_attack_combo.asm line 46
+006BFF24    jal     0x19A040                                          ; asm/controls/GL_attack_combo.asm line 45
+006BFF28    dmove   at,s0                                             ; asm/controls/GL_attack_combo.asm line 46
 006BFF2C .org 0x006C0090                                              ; asm/controls/GL_attack_combo.asm line 48
 006C0090    lhu     v1,0x370(s0)                                      ; asm/controls/GL_attack_combo.asm line 49
 006C0094    andi    v1,0x120                                          ; asm/controls/GL_attack_combo.asm line 50
@@ -11055,4 +11062,4 @@ FFFFFFFF .open "unn1/game.ovl","game.ovl",0x006AF200                  ; D:\pcsx2
 006B262C .org 0x006B2688                                              ; asm/controls/Gun_attack_combo.asm line 1
 006B2688    jal     0x19A000                                          ; asm/controls/Gun_attack_combo.asm line 2
 006B268C    nop                                                       ; asm/controls/Gun_attack_combo.asm line 3
-006B2690 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 51
+006B2690 .close                                                       ; D:\pcsx2\MH\2 Modding\MH2Plus/main.asm line 53

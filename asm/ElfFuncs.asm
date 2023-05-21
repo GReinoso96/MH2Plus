@@ -1,5 +1,6 @@
-.org 0x00199FF0
-.definelabel SnS_Guard_ck,.-(0x280)
+.org 0x00199CDF ; 0x00099F60 0xFFD80
+    .db 0
+.definelabel SnS_Guard_ck,.
     addiu       sp, -0x20
     sd          ra, 0x10(sp)
     sq          s0, (sp)
@@ -12,30 +13,12 @@
     andi        at, v1, BtnCross
     beqz        at, @@CheckTriangle
     nop
-    ;lhu         v1, InputLAnalog(s0)
-    ;andi        at, v1, LAnalogLeft
-    ;bnez        at, @@RollLeft
     li          a1, 0x0
-    ;andi        at, v1, LAnalogRight
-    ;bnez        at, @@RollRight
-    ;nop
     li          a2, 0x1C
     jal         Pl_atk_set
     li          a3, 0x4
     b           @@Return
     nop
-;@@RollLeft:
-    ;li          a2, 0x32
-    ;jal         Pl_atk_set
-    ;li          a3, 0x4
-    ;b           @@Return
-    ;nop
-;@@RollRight:
-    ;li          a2, 0x31
-    ;jal         Pl_atk_set
-    ;li          a3, 0x4
-    ;b           @@Return
-    ;nop
 @@CheckTriangle:
     andi        at, v1, BtnTriangle
     beqz        at, @@CheckCircle
@@ -80,8 +63,8 @@
     lq          s0, (sp)
     jr          ra
     addiu       sp, 0x20
-.align 8
-.definelabel CheckCamSide,.-(0x280)
+    nop
+.definelabel CheckCamSide,.
     lbu         a0, 0x380(s2)
     andi        v0, a0, 0x4
     bnez        v0, @@Do
@@ -102,7 +85,7 @@
 @@Return:
     jr          ra
     nop
-.definelabel CheckCamLeft,.-(0x280)
+.definelabel CheckCamLeft,.
     lhu         a0, 0x6C(s3)
     andi        v0, a0, 0x800
     bnez        v0, @@Do
@@ -119,7 +102,7 @@
 @@Return:
     jr          ra
     nop
-.definelabel CheckCamRight,.-(0x280)
+.definelabel CheckCamRight,.
     lhu         a0, 0x6C(s3)
     andi        v0, a0, 0x400
     bnez        v0, @@Do
@@ -136,7 +119,7 @@
 @@Return:
     jr          ra
     nop
-.definelabel CheckCamUp,.-(0x280)
+.definelabel CheckCamUp,.
     lhu         a0, 0x6E(s3)
     andi        v0, a0, 0x2000
     bnez        v0, @@Do
@@ -157,8 +140,7 @@
 @@Return:
     jr          ra
     nop
-.align 8
-.definelabel GetAttackBtnHH,.-(0x280) ; 0: None, 1: Triangle, 2: Circle, 3: Triangle + Circle, 4: Square
+.definelabel GetAttackBtnHH,. ; 0: None, 1: Triangle, 2: Circle, 3: Triangle + Circle, 4: Square
     lhu         v0, InputFace(a0)
     andi        at, v0, BtnSquare
     beqz        at, @@CheckTrO
@@ -191,9 +173,7 @@
 @@End:
     jr          ra
     nop
-
-.align 8
-.definelabel CheckCamDown,.-(0x280)
+.definelabel CheckCamDown,.
     lhu         a0, 0x6E(s3)
     andi        v0, a0, 0x1000
     bnez        v0, @@Do
@@ -214,8 +194,7 @@
 @@Return:
     jr          ra
     nop
-.align 8
-.definelabel GunUnsheatheCk,.-(0x280)
+.definelabel GunUnsheatheCk,.
     lhu         v0, InputFace(a0)
     andi        at, v0, BtnTriangle
     beqz        at, @@Nope
@@ -233,8 +212,7 @@
 @@End:
     jr          ra
     nop
-.align 8
-.definelabel GlCircleCheck,.-(0x280)
+.definelabel GlCircleCheck,.
     lhu         v0, InputFace(at)
     andi        at, v0, BtnTriangle
     bnez        at, @@Nope
