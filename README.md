@@ -6,6 +6,9 @@ This patch has an optional PROVISORY translation meant to help people until the 
 
 All translated strings match their Freedom Unite equivalents where possible, things that are exclusive to Dos have been translated to match the style.
 
+## Break Arts Compatibility
+This patch is only compatible with Break Arts English Patch v1.0.
+
 # Usage
   * Go to [the releases tab](https://github.com/GReinoso96/MH2Plus/releases) and download the latest version for your ISO.
   * Apply the xdelta using [DeltaPatcher](https://www.romhacking.net/utilities/704/)
