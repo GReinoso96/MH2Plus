@@ -1,14 +1,8 @@
 # MH2Plus
 MH2Plus is an improvement patch for Monster Hunter 2 (Japan, PS2) Game Code SLPM_662.80.
 
-# English Translation
-This patch has an optional PROVISORY translation meant to help people until the release of [Team Break Art's complete localization of the game](https://break-arts.com/projects/mh2dos/), you can still find it under previous releases but it is now entirely deprecated.
-
-All translated strings match their Freedom Unite equivalents where possible, things that are exclusive to Dos have been translated to match the style.
-
-## Break Arts Compatibility
-This patch is only compatible with Break Arts English Patch v1.0.
-
+# LATEST VERSION
+Go to [the official website](https://greinoso96.github.io/mhplus-rel/) to find the latest version.
 # Usage
   * Go to [the releases tab](https://github.com/GReinoso96/MH2Plus/releases) and download the latest version for your ISO.
   * Apply the xdelta using [DeltaPatcher](https://www.romhacking.net/utilities/704/)
